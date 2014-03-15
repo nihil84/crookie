@@ -8,6 +8,7 @@
 
 /* Begin PBXFileReference section */
 		52C92DBC18D4C68A005D2ACC /* libcrookie.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libcrookie.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		52C92DC318D4C6D3005D2ACC /* Handle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Handle.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -24,6 +25,7 @@
 		52C92DB318D4C689005D2ACC = {
 			isa = PBXGroup;
 			children = (
+				52C92DC318D4C6D3005D2ACC /* Handle.h */,
 				52C92DBD18D4C68A005D2ACC /* Products */,
 			);
 			sourceTree = "<group>";
