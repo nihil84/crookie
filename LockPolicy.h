@@ -19,11 +19,14 @@ namespace crookie {
     typedef std::mutex Mutex;
     
     template <class T>
-    struct Traits { typedef T& DataPtr; }
+    struct Traits { typedef T* DataPtr; };
     
-    void lock(const std::mutex& mutex) { mutex.lock(); }
-    void unlock(const std::mutex& mutex) { mutex.unlock(); }
+    static void lock(std::mutex& mutex) { mutex.lock(); }
+    static void unlock(std::mutex& mutex) { mutex.unlock(); }
   };
+  
+  
+  //! @todo implement a read/write mutex and relative locks
   
 } // end of namespace
 

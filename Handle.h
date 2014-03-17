@@ -12,7 +12,8 @@
 namespace crookie {
   
   /**
-   * @brief Locked reference to complex data structures
+   * @brief Locked reference to complex data structures.
+   * 
    */
   template <class T, class LockPolicy>
   class Handle
@@ -23,20 +24,20 @@ namespace crookie {
     
     typedef LockPolicy Locker;
     
-    typedef LockPolicy::Mutex Mutex;
+    typedef typename LockPolicy::Mutex Mutex;
     
-    typedef typename LockPolicy::Traits<T>::DataPtr DataPtr;
+    typedef typename LockPolicy::template Traits<T>::DataPtr DataPtr;
     
     
     // constructor and destructor
     
     Handle(DataPtr data, Mutex& mutex)
       : data_(data), mutex_(mutex)
-    { Locker::lock(mutex); }
+    { Locker::lock(mutex_); }
     
     ~Handle()
     {
-      if (data_ != NULL) Locker::unlock(mutex);
+      if (data_ != NULL) Locker::unlock(mutex_);
     }
     
     

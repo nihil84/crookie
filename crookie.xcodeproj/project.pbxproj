@@ -6,14 +6,42 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		52C92DCC18D4D250005D2ACC /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 52C92DCB18D4D250005D2ACC /* main.cpp */; };
+		52C92DCE18D4D250005D2ACC /* testexe.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 52C92DCD18D4D250005D2ACC /* testexe.1 */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		52C92DC718D4D250005D2ACC /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+				52C92DCE18D4D250005D2ACC /* testexe.1 in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		52C92DBC18D4C68A005D2ACC /* libcrookie.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libcrookie.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		52C92DC318D4C6D3005D2ACC /* Handle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Handle.h; sourceTree = "<group>"; };
 		52C92DC418D4CD18005D2ACC /* LockPolicy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LockPolicy.h; sourceTree = "<group>"; };
+		52C92DC918D4D250005D2ACC /* testexe */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = testexe; sourceTree = BUILT_PRODUCTS_DIR; };
+		52C92DCB18D4D250005D2ACC /* main.cpp */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; tabWidth = 2; };
+		52C92DCD18D4D250005D2ACC /* testexe.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = testexe.1; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		52C92DB918D4C689005D2ACC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		52C92DC618D4D250005D2ACC /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -28,6 +56,7 @@
 			children = (
 				52C92DC418D4CD18005D2ACC /* LockPolicy.h */,
 				52C92DC318D4C6D3005D2ACC /* Handle.h */,
+				52C92DCA18D4D250005D2ACC /* testexe */,
 				52C92DBD18D4C68A005D2ACC /* Products */,
 			);
 			sourceTree = "<group>";
@@ -36,8 +65,18 @@
 			isa = PBXGroup;
 			children = (
 				52C92DBC18D4C68A005D2ACC /* libcrookie.a */,
+				52C92DC918D4D250005D2ACC /* testexe */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		52C92DCA18D4D250005D2ACC /* testexe */ = {
+			isa = PBXGroup;
+			children = (
+				52C92DCB18D4D250005D2ACC /* main.cpp */,
+				52C92DCD18D4D250005D2ACC /* testexe.1 */,
+			);
+			path = testexe;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -70,6 +109,23 @@
 			productReference = 52C92DBC18D4C68A005D2ACC /* libcrookie.a */;
 			productType = "com.apple.product-type.library.static";
 		};
+		52C92DC818D4D250005D2ACC /* testexe */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 52C92DCF18D4D250005D2ACC /* Build configuration list for PBXNativeTarget "testexe" */;
+			buildPhases = (
+				52C92DC518D4D250005D2ACC /* Sources */,
+				52C92DC618D4D250005D2ACC /* Frameworks */,
+				52C92DC718D4D250005D2ACC /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = testexe;
+			productName = testexe;
+			productReference = 52C92DC918D4D250005D2ACC /* testexe */;
+			productType = "com.apple.product-type.tool";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -92,6 +148,7 @@
 			projectRoot = "";
 			targets = (
 				52C92DBB18D4C689005D2ACC /* crookie */,
+				52C92DC818D4D250005D2ACC /* testexe */,
 			);
 		};
 /* End PBXProject section */
@@ -101,6 +158,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		52C92DC518D4D250005D2ACC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				52C92DCC18D4D250005D2ACC /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -191,6 +256,24 @@
 			};
 			name = Release;
 		};
+		52C92DD018D4D250005D2ACC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		52C92DD118D4D250005D2ACC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -208,6 +291,14 @@
 			buildConfigurations = (
 				52C92DC118D4C68A005D2ACC /* Debug */,
 				52C92DC218D4C68A005D2ACC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		52C92DCF18D4D250005D2ACC /* Build configuration list for PBXNativeTarget "testexe" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				52C92DD018D4D250005D2ACC /* Debug */,
+				52C92DD118D4D250005D2ACC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
