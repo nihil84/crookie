@@ -25,8 +25,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		524CF69B18D774C00089F45D /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.md; sourceTree = SOURCE_ROOT; };
 		52C92DBC18D4C68A005D2ACC /* libcrookie.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libcrookie.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		52C92DC318D4C6D3005D2ACC /* Handle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Handle.h; sourceTree = "<group>"; };
+		52C92DC318D4C6D3005D2ACC /* LockedRef.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; path = LockedRef.h; sourceTree = "<group>"; };
 		52C92DC418D4CD18005D2ACC /* LockPolicy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LockPolicy.h; sourceTree = "<group>"; };
 		52C92DC918D4D250005D2ACC /* testexe */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = testexe; sourceTree = BUILT_PRODUCTS_DIR; };
 		52C92DCB18D4D250005D2ACC /* main.cpp */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; tabWidth = 2; };
@@ -55,9 +56,10 @@
 			isa = PBXGroup;
 			children = (
 				52C92DC418D4CD18005D2ACC /* LockPolicy.h */,
-				52C92DC318D4C6D3005D2ACC /* Handle.h */,
+				52C92DC318D4C6D3005D2ACC /* LockedRef.h */,
 				52C92DCA18D4D250005D2ACC /* testexe */,
 				52C92DBD18D4C68A005D2ACC /* Products */,
+				524CF69B18D774C00089F45D /* README.md */,
 			);
 			sourceTree = "<group>";
 		};
@@ -293,6 +295,7 @@
 				52C92DC218D4C68A005D2ACC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		52C92DCF18D4D250005D2ACC /* Build configuration list for PBXNativeTarget "testexe" */ = {
 			isa = XCConfigurationList;
@@ -301,6 +304,7 @@
 				52C92DD118D4D250005D2ACC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

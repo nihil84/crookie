@@ -16,7 +16,7 @@ namespace crookie {
    * 
    */
   template <class T, class LockPolicy>
-  class Handle
+  class LockedRef
   {
   public:
     
@@ -31,11 +31,11 @@ namespace crookie {
     
     // constructor and destructor
     
-    Handle(DataPtr data, Mutex& mutex)
+    LockedRef(DataPtr data, Mutex& mutex)
       : data_(data), mutex_(mutex)
     { Locker::lock(mutex_); }
     
-    ~Handle()
+    ~LockedRef()
     {
       if (data_ != NULL) Locker::unlock(mutex_);
     }
@@ -43,13 +43,13 @@ namespace crookie {
     
     // move constructor and move assignement operator
     
-    Handle(Handle&& temp)
+    LockedRef(LockedRef&& temp)
       : data_(temp.data_), mutex_(temp.mutex_)
     {
       temp.data_ = NULL;
     }
     
-    Handle& operator =(Handle&& temp)
+    LockedRef& operator =(LockedRef&& temp)
     {
       this->data_ = temp.data_;
       this->mutex_ = temp.mutex_;
@@ -70,6 +70,11 @@ namespace crookie {
     
     Mutex& mutex_;
     
+    
+    // copy and assignement disabled
+    
+    LockedRef(const LockedRef&);
+    LockedRef& operator =(const LockedRef&);
   };
 
   
