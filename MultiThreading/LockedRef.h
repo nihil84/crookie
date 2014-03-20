@@ -1,5 +1,5 @@
 //
-//  Handle.h
+//  LockedRef.h
 //  crookie
 //
 //  Created by Paolo Bernini on 15/03/14.
