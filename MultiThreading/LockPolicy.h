@@ -14,19 +14,38 @@
 
 namespace crookie {
   
+  /**
+   * @brief Basic LockPolicy for LockedPtr with std::mutex.
+   * 
+   * Grants unique (write) ownership of shared data allowing for both read
+   * write operations.
+   *
+   * @note
+   * You can define your own LockPolicy/ies by following this class as template.
+   */
   struct SimpleLock
   {
+    //! Mutex type used for lock/unlock operations.
     typedef std::mutex Mutex;
     
-    template <class T>
-    struct Traits { typedef T* DataPtr; };
+    //! Dependent type definition(s).
+    template <class T> struct Traits
+    {
+      //! Type of the pointer to use for data objects locked by this Lock
+      typedef T* DataPtr;
+    };
     
-    static void lock(std::mutex& mutex) { mutex.lock(); }
-    static void unlock(std::mutex& mutex) { mutex.unlock(); }
+    //! @brief Perform a lock operation on given mutex.
+    //! @param [in] mutex   mutex object to lock.
+    static void lock(Mutex& mutex) { mutex.lock(); }
+    
+    //! @brief Perform an unlock operation on given mutex.
+    //! @param [in] mutex   mutex object to unlock.
+    static void unlock(Mutex& mutex) { mutex.unlock(); }
   };
   
   
-  //! @todo implement a read/write mutex and relative locks
+  //! @todo implement a read/write (shared) mutex and relative locks
   
 } // end of namespace
 

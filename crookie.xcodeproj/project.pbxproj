@@ -26,8 +26,9 @@
 
 /* Begin PBXFileReference section */
 		524CF69B18D774C00089F45D /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.md; sourceTree = SOURCE_ROOT; };
+		524CF69D18DAF7800089F45D /* Doxyfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Doxyfile; sourceTree = "<group>"; };
 		52C92DBC18D4C68A005D2ACC /* libcrookie.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libcrookie.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		52C92DC318D4C6D3005D2ACC /* LockedRef.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; path = LockedRef.h; sourceTree = "<group>"; };
+		52C92DC318D4C6D3005D2ACC /* LockedPtr.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; path = LockedPtr.h; sourceTree = "<group>"; };
 		52C92DC418D4CD18005D2ACC /* LockPolicy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LockPolicy.h; sourceTree = "<group>"; };
 		52C92DC918D4D250005D2ACC /* testexe */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = testexe; sourceTree = BUILT_PRODUCTS_DIR; };
 		52C92DCB18D4D250005D2ACC /* main.cpp */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; tabWidth = 2; };
@@ -56,7 +57,7 @@
 			isa = PBXGroup;
 			children = (
 				52C92DC418D4CD18005D2ACC /* LockPolicy.h */,
-				52C92DC318D4C6D3005D2ACC /* LockedRef.h */,
+				52C92DC318D4C6D3005D2ACC /* LockedPtr.h */,
 			);
 			path = MultiThreading;
 			sourceTree = "<group>";
@@ -64,10 +65,11 @@
 		52C92DB318D4C689005D2ACC = {
 			isa = PBXGroup;
 			children = (
+				524CF69D18DAF7800089F45D /* Doxyfile */,
+				524CF69B18D774C00089F45D /* README.md */,
 				524CF69C18DAF1190089F45D /* MultiThreading */,
 				52C92DCA18D4D250005D2ACC /* testexe */,
 				52C92DBD18D4C68A005D2ACC /* Products */,
-				524CF69B18D774C00089F45D /* README.md */,
 			);
 			sourceTree = "<group>";
 		};
