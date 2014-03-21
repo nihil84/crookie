@@ -1,5 +1,5 @@
 //
-//  LockedPtr.h
+//  MultiThreading/LockedPtr.h
 //  crookie
 //
 //  Created by Paolo Bernini on 15/03/14.

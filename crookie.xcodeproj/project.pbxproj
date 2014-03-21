@@ -29,7 +29,7 @@
 		524CF69D18DAF7800089F45D /* Doxyfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Doxyfile; sourceTree = "<group>"; };
 		52C92DBC18D4C68A005D2ACC /* libcrookie.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libcrookie.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		52C92DC318D4C6D3005D2ACC /* LockedPtr.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; path = LockedPtr.h; sourceTree = "<group>"; };
-		52C92DC418D4CD18005D2ACC /* LockPolicy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LockPolicy.h; sourceTree = "<group>"; };
+		52C92DC418D4CD18005D2ACC /* SimpleLock.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimpleLock.h; sourceTree = "<group>"; };
 		52C92DC918D4D250005D2ACC /* testexe */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = testexe; sourceTree = BUILT_PRODUCTS_DIR; };
 		52C92DCB18D4D250005D2ACC /* main.cpp */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; tabWidth = 2; };
 		52C92DCD18D4D250005D2ACC /* testexe.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = testexe.1; sourceTree = "<group>"; };
@@ -56,7 +56,7 @@
 		524CF69C18DAF1190089F45D /* MultiThreading */ = {
 			isa = PBXGroup;
 			children = (
-				52C92DC418D4CD18005D2ACC /* LockPolicy.h */,
+				52C92DC418D4CD18005D2ACC /* SimpleLock.h */,
 				52C92DC318D4C6D3005D2ACC /* LockedPtr.h */,
 			);
 			path = MultiThreading;

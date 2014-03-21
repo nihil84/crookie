@@ -8,7 +8,7 @@
 
 #include <iostream>
 
-#include "LockPolicy.h"
+#include "SimpleLock.h"
 #include "LockedPtr.h"
 
 using namespace crookie;
@@ -21,9 +21,9 @@ struct TestData
   float c;
 };
 
-typedef LockedPtr<TestData, SimpleLock> DataHandle;
+typedef LockedPtr<TestData, LockPolicies::SimpleLock> DataHandle;
 
-DataHandle getHandle(TestData& data, SimpleLock::Mutex& mutex)
+DataHandle getHandle(TestData& data, LockPolicies::SimpleLock::Mutex& mutex)
 {
   return DataHandle(&data, mutex);
 }
@@ -33,10 +33,10 @@ int main(int argc, const char * argv[])
 {
 
   TestData data;
-  SimpleLock::Mutex mutex;
+  LockPolicies::SimpleLock::Mutex mutex;
   
   {
-    LockedPtr<TestData, SimpleLock> handle(&data, mutex);
+    LockedPtr<TestData, LockPolicies::SimpleLock> handle(&data, mutex);
     cout << "Handle created" << endl;
   }
   
@@ -46,7 +46,7 @@ int main(int argc, const char * argv[])
   
   cout << "Handle factory (with move constructor) used" << endl;
   
-  LockedPtr<TestData, SimpleLock> handle3(&data, mutex); // << deadlock
+  LockedPtr<TestData, LockPolicies::SimpleLock> handle3(&data, mutex); // << deadlock
   
   cout << "Unreachable code here" << endl;
     
