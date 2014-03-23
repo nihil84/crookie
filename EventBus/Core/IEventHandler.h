@@ -1,19 +1,17 @@
 #ifndef IEVENTHANDLER_H
 #define IEVENTHANDLER_H
 
-#include "../Dynamic/EventBus.hpp"
+#include "../Dynamic/EventBus.h"
 
 
-namespace GEB {
-  
-namespace Core {
+namespace crookie {
 
   //! @brief EventBus handler base interface
   class IEventHandler
   {
   public:
 
-    typedef GEB::EventBus::Event Event;
+    typedef EventBus::Event Event;
 
     IEventHandler() { }
 
@@ -31,6 +29,6 @@ namespace Core {
   };
 
   
-}} // end of namespaces Core and GEB
+}
 
-#endif // IHANDLER_H
+#endif

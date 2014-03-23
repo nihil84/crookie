@@ -4,15 +4,13 @@
 //  Copyright (c) 2013 IDS. All rights reserved.
 //
 
-#ifndef MONITOREDCOLLECTION_HPP
-#define MONITOREDCOLLECTION_HPP
+#ifndef MONITOREDCOLLECTION_H
+#define MONITOREDCOLLECTION_H
 
 #include <list>
 #include <mutex>
 
-namespace GEB {
-
-namespace Core {
+namespace crookie {
 
   template < class C, class Lockable = std::mutex >
   class LockedIterable
@@ -87,7 +85,7 @@ namespace Core {
   };
 
 
-}} // end of namespaces Core and GEB
+}
 
 
-#endif // MONITOREDCOLLECTION_HPP
+#endif

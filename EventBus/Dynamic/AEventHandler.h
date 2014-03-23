@@ -2,17 +2,17 @@
 #define DYNAMIC_AEVENTHANDLER_HPP
 
 #include "../Core/IEventHandler.h"
-#include "EventBus.hpp"
+#include "EventBus.h"
 
 
-namespace GEB {
+namespace crookie {
 
   /**
    * @brief Event handler base class
    * @tparam EventType    Type of the Event handled by this class.
    */
   template <class EventType>
-  class AEventHandler : public Core::IEventHandler
+  class AEventHandler : public IEventHandler
   {
   public:
 

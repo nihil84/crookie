@@ -1,13 +1,13 @@
-#ifndef DYNAMIC_ACTIVEOBJECT_HPP
-#define DYNAMIC_ACTIVEOBJECT_HPP
+#ifndef DYNAMIC_ACTIVEOBJECT_H
+#define DYNAMIC_ACTIVEOBJECT_H
 
-#include "AEventHandler.hpp"
+#include "AEventHandler.h"
 
 #include <list>
 #include <mutex>
 
 
-namespace GEB {
+namespace crookie {
 
 
   template < class Event>
@@ -55,6 +55,6 @@ namespace GEB {
   }
 
 
-} // end of namespace SBus
+}
 
-#endif // DYNAMIC_ACTIVEOBJECT_HPP
+#endif // DYNAMIC_ACTIVEOBJECT_H

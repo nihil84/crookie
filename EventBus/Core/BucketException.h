@@ -1,21 +1,20 @@
-#ifndef BUCKETEXCEPTION_HPP
-#define BUCKETEXCEPTION_HPP
+#ifndef BUCKETEXCEPTION_H
+#define BUCKETEXCEPTION_H
 
 #include <list>
 #include <stdexcept>
 #include <sstream>
 
 
-namespace GEB {
-  
-namespace Core {
+namespace crookie {
+
 
   /**
-   * @brief Exception made by a list of exceptions.
+   * @brief Exception collection made by a list of exceptions.
    *
    * This class is used by EventBus to collect exceptions raised by event
-   * handlers: before propating them the EventBus complete to process handlers,
-   * thus more than one exceptions may be raised.
+   * handlers: before propagating them the EventBus complete to process 
+   * handlers, thus more than one exceptions may be raised.
    *
    * You should catch this exception type on each EventBus::dispatch() call but
    * you can defer it to any external environment if you will.
@@ -109,6 +108,6 @@ namespace Core {
   }
   
   
-}} // end of namespaces GEB and Core
+}
 
-#endif // BUCKETEXCEPTION_HPP
+#endif

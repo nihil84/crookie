@@ -1,9 +1,9 @@
-#ifndef DYNAMIC_EVENTBUS_HPP
-#define DYNAMIC_EVENTBUS_HPP
+#ifndef DYNAMIC_EVENTBUS_H
+#define DYNAMIC_EVENTBUS_H
 
-#include "../Core/IEvent.hpp"
-#include "../Core/BucketException.hpp"
-#include "../Core/MonitoredCollection.hpp"
+#include "../Core/IEvent.h"
+#include "../Core/BucketException.h"
+#include "../Core/MonitoredCollection.h"
 
 #include <memory>
 #include <mutex>
@@ -11,7 +11,7 @@
 #include <map>
 
 
-namespace GEB {
+namespace crookie {
 
   // forward declarations
 
@@ -37,10 +37,10 @@ namespace GEB {
     typedef std::shared_ptr<IEvent> Event;
 
     //! @brief Event handlers base interface type
-    typedef Core::IEventHandler IBusHandler;
+    typedef IEventHandler IBusHandler;
 
     //! @brief Type of subscribers list
-    typedef Core::MonitoredCollection< IBusHandler* > List;
+    typedef MonitoredCollection< IBusHandler* > List;
 
 
     //! @brief Association to a subscribers list.
@@ -131,7 +131,6 @@ namespace GEB {
   }
 
 
-} // end of namespace GEB
+}
 
-
-#endif // DYNAMIC_EVENTBUS_HPP
+#endif // DYNAMIC_EVENTBUS_H

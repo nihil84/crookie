@@ -1,24 +1,26 @@
-#ifndef STATIC_ACTIVEOBJECT_HPP
-#define STATIC_ACTIVEOBJECT_HPP
+#ifndef STATIC_ACTIVEOBJECT_H
+#define STATIC_ACTIVEOBJECT_H
 
-#include "../Dynamic/ActiveObject.hpp"
+#include "../Dynamic/ActiveObject.h"
 #include "StaticBus.hpp"
 
 
-namespace SGEB {
+namespace crookie {
+namespace sbus {
 
-    template < unsigned int buscode, class Event >
-    class ActiveObject : public GEB::ActiveObject< Event >
-    {
-    public:
+  template < unsigned int buscode, class Event >
+  class ActiveObject : public crookie::ActiveObject< Event >
+  {
+  public:
 
-        typedef StaticBus< buscode > Bus;
+    typedef StaticBus< buscode > Bus;
 
-        ActiveObject()
-            : GEB::ActiveObject< Event >(Bus::instance())
-        { }
-    };
+    ActiveObject()
+      : crookie::ActiveObject< Event >(Bus::instance())
+    { }
+  };
 
-} // end of namespace SGEB
+  
+}}
 
-#endif // STATIC_ACTIVEOBJECT_HPP
+#endif // STATIC_ACTIVEOBJECT_H

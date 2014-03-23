@@ -1,26 +1,27 @@
-#ifndef STATIC_AEVENTHANDLER_HPP
-#define STATIC_AEVENTHANDLER_HPP
+#ifndef STATIC_AEVENTHANDLER_H
+#define STATIC_AEVENTHANDLER_H
 
-#include "StaticBus.hpp"
-#include "../Dinamic/AEventHandler.hpp"
+#include "StaticBus.h"
+#include "../Dinamic/AEventHandler.h"
 
 
-namespace SGEB {
+namespace crookie {
+namespace sbus {
   
   //! @brief Basic class for event handlers on StaticBus
   template < unsigned int buscode, class EventType >
-  class AEventHandler : public DBus::AEventHandler< EventType >
+  class AEventHandler : public crookie::AEventHandler< EventType >
   {
   public:
 
     typedef StaticBus< buscode > Bus;   //!< Handler owner bus type
 
     AEventHandler()
-        : DBus::AEventHandler< EventType >(Bus::instance())
+      : crookie::AEventHandler< EventType >(Bus::instance())
     { }
   };
 
   
-}
+}}
 
-#endif // STATIC_AEVENTHANDLER_HPP
+#endif // STATIC_AEVENTHANDLER_H

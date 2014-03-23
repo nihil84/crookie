@@ -1,14 +1,12 @@
-#ifndef IEVENT_HPP
-#define IEVENT_HPP
+#ifndef IEVENT_H
+#define IEVENT_H
 
 // forward declarations
 
 
-namespace GEB {
+namespace crookie {
 
-namespace Core {
-    class IEventHandler;
-} // end of namespace Core
+  class IEventHandler;
 
 /**
  * @brief Event base interface
@@ -19,26 +17,26 @@ namespace Core {
  * its argument with your event class-name, as the axample below.
  *
  * @code{.cpp}
- *  // file MyEvent.h
- *  #include <IEvent.h>
- *
- *  class MyEvent : public IEvent
- *  {
- *      BUS_EVENT(MyEvent)
- *
- *  public:
- *
- *      static const EventType TYPE;
- *      virtual int type() const { return TYPE; }
- *  }
- * @endcode
+   // file MyEvent.h
+   #include <IEvent.h>
+ 
+   class MyEvent : public IEvent
+   {
+       BUS_EVENT(MyEvent)
+ 
+   public:
+ 
+       static const EventType TYPE;
+       virtual int type() const { return TYPE; }
+   }
+   @endcode
  *
  * Always follow the example above and remember to instance somewhere in a .cpp
  * the static member @a TYPE as follows:
  * @code
- * // file MyEvent.cpp
- * const EventType MyEvent::TYPE;
- * @endcode
+   // file MyEvent.cpp
+   const EventType MyEvent::TYPE;
+   @endcode
  *
  * Any other detail of MyEvent class (constructor parameters, public methods,
  * data members, etc...) is up to you.
@@ -61,7 +59,7 @@ public:
     //! @brief Routine demanded to call the handler on last instance.
     //! @param handler [in]     handler on whom call onEvent(ActualEventType&)
     //! @note This pure virtual method is implemented by #BUS_EVENT(EventClass)
-    virtual void dispatch(Core::IEventHandler& handler) const = 0;
+    virtual void dispatch(IEventHandler& handler) const = 0;
 };
 
 //! @brief Automatic Event type code generator.
@@ -82,6 +80,6 @@ private:
     int type_;
 };
   
-} // end of namespace GEB
+}
 
-#endif // IEVENT_HPP
+#endif

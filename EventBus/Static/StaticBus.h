@@ -5,29 +5,27 @@
 //
 
 
-#ifndef STATIC_EVENTBUS_HPP
-#define STATIC_EVENTBUS_HPP
+#ifndef STATIC_EVENTBUS_H
+#define STATIC_EVENTBUS_H
 
 #include "../Dynamic/EventBus.hpp"
 
 
-namespace SGEB {
+namespace crookie {
 
-// forward declarations
-namespace Core {
+  // forward declarations
   template <unsigned int code> class AEventHandler;
-}
 
   // code
 
   template < unsigned int code >
-  class StaticBus : public GEB::EventBus
+  class StaticBus : public EventBus
   {
   public /*types*/:
 
     static const unsigned CODE = code;
 
-    typedef Core::AEventHandler< code > IBusHandler;
+    typedef AEventHandler< code > IBusHandler;
 
 
   public /*interface*/:
@@ -76,12 +74,11 @@ namespace Core {
 
 //- template instance --------------------------------------------------------//
 
-    enum Id { Main = 0 };
+  enum Id { Main = 0 };
 
-    typedef StaticBus< Main > MainBus;
+  typedef StaticBus< Main > MainBus;
 
-} // end of namespace SBus
+  
+}
 
-
-
-#endif // STATIC_EVENTBUS_HPP
+#endif
