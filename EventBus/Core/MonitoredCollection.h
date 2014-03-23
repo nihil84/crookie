@@ -1,0 +1,93 @@
+//  MonitoredCollection.h
+//
+//  Created by Paolo Bernini on 20/01/13.
+//  Copyright (c) 2013 IDS. All rights reserved.
+//
+
+#ifndef MONITOREDCOLLECTION_HPP
+#define MONITOREDCOLLECTION_HPP
+
+#include <list>
+#include <mutex>
+
+namespace GEB {
+
+namespace Core {
+
+  template < class C, class Lockable = std::mutex >
+  class LockedIterable
+  {
+  public:
+
+    typedef typename C::const_iterator const_iterator;
+    typedef const_iterator ConstIterator;
+
+    LockedIterable(const C& collection, Lockable& mutex)
+        : mutex_(mutex), collection_(collection)
+    { mutex_.lock(); }
+
+    ~LockedIterable()
+    { mutex_.unlock(); }
+
+    const_iterator begin() const { return collection_.begin(); }
+
+    const_iterator end() const { return collection_.end(); }
+
+  private:
+
+    Lockable& mutex_;
+    const C& collection_;
+  };
+
+  /**
+   * @brief Generic collection of elements with mutual exclusion access.
+   * @tparam [in] T           type of collection elements.
+   * @tparam [in] Collection  type of collection.
+   */
+  template < typename T, class Collection = std::list<T> >
+  class MonitoredCollection
+  {
+  public:
+
+    typedef T ElementType;
+    typedef Collection CollectionType;
+    typedef LockedIterable< CollectionType > Iterable;
+
+    //! @brief Add an element to the collection.
+    void add(const ElementType& element)
+    {
+      std::unique_lock<std::mutex> lock(mutex_);
+      collection_.push_back(element);
+    }
+
+    //! @brief Remove given element from the collection.
+    void remove(const ElementType& element)
+    {
+      std::unique_lock<std::mutex> lock(mutex_);
+      collection_.remove(element);
+    }
+
+    //! @brief Checks if collection already contains given element.
+    bool contains(const ElementType& element)
+    {
+      std::unique_lock<std::mutex> lock(mutex_);
+      return collection_.contains(element);
+    }
+
+    //! @brief Return a special object that allows to iterate over the
+    //! collection in mutual exclusion.
+    //! @note Collection remains locked until object destruction.
+    Iterable getIterable()
+    { return Iterable(collection_, mutex_); }
+
+  private:
+
+    std::mutex mutex_;
+    CollectionType collection_;
+  };
+
+
+}} // end of namespaces Core and GEB
+
+
+#endif // MONITOREDCOLLECTION_HPP

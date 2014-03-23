@@ -7,6 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5260847218DEEFBC002071DB /* BucketException.h in Headers */ = {isa = PBXBuildFile; fileRef = 5260846E18DEEFBC002071DB /* BucketException.h */; };
+		5260847318DEEFBC002071DB /* IEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 5260846F18DEEFBC002071DB /* IEvent.h */; };
+		5260847418DEEFBC002071DB /* IEventHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = 5260847018DEEFBC002071DB /* IEventHandler.h */; };
+		5260847518DEEFBC002071DB /* MonitoredCollection.h in Headers */ = {isa = PBXBuildFile; fileRef = 5260847118DEEFBC002071DB /* MonitoredCollection.h */; };
+		5260847D18DEF036002071DB /* ActiveObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 5260847A18DEF036002071DB /* ActiveObject.h */; };
+		5260847E18DEF036002071DB /* AEventHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = 5260847B18DEF036002071DB /* AEventHandler.h */; };
+		5260847F18DEF036002071DB /* StaticBus.h in Headers */ = {isa = PBXBuildFile; fileRef = 5260847C18DEF036002071DB /* StaticBus.h */; };
+		5260848418DEF045002071DB /* ActiveObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 5260848018DEF045002071DB /* ActiveObject.h */; };
+		5260848518DEF045002071DB /* AEventHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = 5260848118DEF045002071DB /* AEventHandler.h */; };
+		5260848618DEF045002071DB /* EventBus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5260848218DEF045002071DB /* EventBus.cpp */; };
+		5260848718DEF045002071DB /* EventBus.h in Headers */ = {isa = PBXBuildFile; fileRef = 5260848318DEF045002071DB /* EventBus.h */; };
 		52C92DCC18D4D250005D2ACC /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 52C92DCB18D4D250005D2ACC /* main.cpp */; };
 		52C92DCE18D4D250005D2ACC /* testexe.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 52C92DCD18D4D250005D2ACC /* testexe.1 */; };
 /* End PBXBuildFile section */
@@ -27,6 +38,17 @@
 /* Begin PBXFileReference section */
 		524CF69B18D774C00089F45D /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.md; sourceTree = SOURCE_ROOT; };
 		524CF69D18DAF7800089F45D /* Doxyfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Doxyfile; sourceTree = "<group>"; };
+		5260846E18DEEFBC002071DB /* BucketException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BucketException.h; sourceTree = "<group>"; };
+		5260846F18DEEFBC002071DB /* IEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IEvent.h; sourceTree = "<group>"; };
+		5260847018DEEFBC002071DB /* IEventHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IEventHandler.h; sourceTree = "<group>"; };
+		5260847118DEEFBC002071DB /* MonitoredCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonitoredCollection.h; sourceTree = "<group>"; };
+		5260847A18DEF036002071DB /* ActiveObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ActiveObject.h; path = Static/ActiveObject.h; sourceTree = "<group>"; };
+		5260847B18DEF036002071DB /* AEventHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AEventHandler.h; path = Static/AEventHandler.h; sourceTree = "<group>"; };
+		5260847C18DEF036002071DB /* StaticBus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StaticBus.h; path = Static/StaticBus.h; sourceTree = "<group>"; };
+		5260848018DEF045002071DB /* ActiveObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ActiveObject.h; path = Dynamic/ActiveObject.h; sourceTree = "<group>"; };
+		5260848118DEF045002071DB /* AEventHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AEventHandler.h; path = Dynamic/AEventHandler.h; sourceTree = "<group>"; };
+		5260848218DEF045002071DB /* EventBus.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = EventBus.cpp; path = Dynamic/EventBus.cpp; sourceTree = "<group>"; };
+		5260848318DEF045002071DB /* EventBus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventBus.h; path = Dynamic/EventBus.h; sourceTree = "<group>"; };
 		52C92DBC18D4C68A005D2ACC /* libcrookie.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libcrookie.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		52C92DC318D4C6D3005D2ACC /* LockedPtr.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; path = LockedPtr.h; sourceTree = "<group>"; };
 		52C92DC418D4CD18005D2ACC /* SimpleLock.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimpleLock.h; sourceTree = "<group>"; };
@@ -62,11 +84,54 @@
 			path = MultiThreading;
 			sourceTree = "<group>";
 		};
+		5260847618DEEFD1002071DB /* EventBus */ = {
+			isa = PBXGroup;
+			children = (
+				5260847918DEF021002071DB /* Dynamic */,
+				5260847818DEF017002071DB /* Static */,
+				5260847718DEEFEE002071DB /* Core */,
+			);
+			path = EventBus;
+			sourceTree = "<group>";
+		};
+		5260847718DEEFEE002071DB /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				5260846E18DEEFBC002071DB /* BucketException.h */,
+				5260846F18DEEFBC002071DB /* IEvent.h */,
+				5260847018DEEFBC002071DB /* IEventHandler.h */,
+				5260847118DEEFBC002071DB /* MonitoredCollection.h */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		5260847818DEF017002071DB /* Static */ = {
+			isa = PBXGroup;
+			children = (
+				5260847A18DEF036002071DB /* ActiveObject.h */,
+				5260847B18DEF036002071DB /* AEventHandler.h */,
+				5260847C18DEF036002071DB /* StaticBus.h */,
+			);
+			name = Static;
+			sourceTree = "<group>";
+		};
+		5260847918DEF021002071DB /* Dynamic */ = {
+			isa = PBXGroup;
+			children = (
+				5260848018DEF045002071DB /* ActiveObject.h */,
+				5260848118DEF045002071DB /* AEventHandler.h */,
+				5260848218DEF045002071DB /* EventBus.cpp */,
+				5260848318DEF045002071DB /* EventBus.h */,
+			);
+			name = Dynamic;
+			sourceTree = "<group>";
+		};
 		52C92DB318D4C689005D2ACC = {
 			isa = PBXGroup;
 			children = (
 				524CF69D18DAF7800089F45D /* Doxyfile */,
 				524CF69B18D774C00089F45D /* README.md */,
+				5260847618DEEFD1002071DB /* EventBus */,
 				524CF69C18DAF1190089F45D /* MultiThreading */,
 				52C92DCA18D4D250005D2ACC /* testexe */,
 				52C92DBD18D4C68A005D2ACC /* Products */,
@@ -98,6 +163,16 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5260847518DEEFBC002071DB /* MonitoredCollection.h in Headers */,
+				5260847218DEEFBC002071DB /* BucketException.h in Headers */,
+				5260847F18DEF036002071DB /* StaticBus.h in Headers */,
+				5260847318DEEFBC002071DB /* IEvent.h in Headers */,
+				5260847418DEEFBC002071DB /* IEventHandler.h in Headers */,
+				5260847E18DEF036002071DB /* AEventHandler.h in Headers */,
+				5260847D18DEF036002071DB /* ActiveObject.h in Headers */,
+				5260848518DEF045002071DB /* AEventHandler.h in Headers */,
+				5260848718DEF045002071DB /* EventBus.h in Headers */,
+				5260848418DEF045002071DB /* ActiveObject.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -170,6 +245,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5260848618DEF045002071DB /* EventBus.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
