@@ -21,11 +21,11 @@ namespace crookie {
     typedef const_iterator ConstIterator;
 
     LockedIterable(const C& collection, Lockable& mutex)
-        : mutex_(mutex), collection_(collection)
-    { mutex_.lock(); }
+        : m_mutex(mutex), collection_(collection)
+    { m_mutex.lock(); }
 
     ~LockedIterable()
-    { mutex_.unlock(); }
+    { m_mutex.unlock(); }
 
     const_iterator begin() const { return collection_.begin(); }
 
@@ -33,7 +33,7 @@ namespace crookie {
 
   private:
 
-    Lockable& mutex_;
+    Lockable& m_mutex;
     const C& collection_;
   };
 
@@ -63,13 +63,6 @@ namespace crookie {
     {
       std::unique_lock<std::mutex> lock(mutex_);
       collection_.remove(element);
-    }
-
-    //! @brief Checks if collection already contains given element.
-    bool contains(const ElementType& element)
-    {
-      std::unique_lock<std::mutex> lock(mutex_);
-      return collection_.contains(element);
     }
 
     //! @brief Return a special object that allows to iterate over the

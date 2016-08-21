@@ -90,15 +90,15 @@ namespace crookie {
     //! @param [in] data    pointer to shared data structure.
     //! @param [in] mutex   mutex to use to acquire/release locks on given data.
     LockedPtr(DataPtr data, Mutex& mutex) noexcept
-      : data_(data), mutex_(mutex)
+      : data_(data), m_mutex(mutex)
     {
-      Locker::lock(mutex_);
+      Locker::lock(m_mutex);
     }
     
     //! @brief Unlock the data mutex
     ~LockedPtr()
     {
-      if (data_ != NULL) Locker::unlock(mutex_);
+      if (data_ != NULL) Locker::unlock(m_mutex);
     }
     
     
@@ -107,7 +107,7 @@ namespace crookie {
     //! @brief Move constructor. Ensure data ownership from temporary objects
     //! to the effective reference instance.
     LockedPtr(LockedPtr&& temp)
-      : data_(temp.data_), mutex_(temp.mutex_)
+      : data_(temp.data_), m_mutex(temp.mutex_)
     {
       temp.data_ = NULL;
     }
@@ -138,7 +138,7 @@ namespace crookie {
   private:
     
     DataPtr data_;  //!< Pointer to shared data object
-    Mutex& mutex_;  //!< Mutex instance for locking/unlocking operations
+    Mutex& m_mutex;  //!< Mutex instance for locking/unlocking operations
     
     
     // copy and assignement disabled

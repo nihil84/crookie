@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>EventBusUnitTest.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 		<key>crookie.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -23,6 +28,11 @@
 			<true/>
 		</dict>
 		<key>52C92DC818D4D250005D2ACC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>52D261C01D68BC1A00870E30</key>
 		<dict>
 			<key>primary</key>
 			<true/>

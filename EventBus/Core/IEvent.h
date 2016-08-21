@@ -6,14 +6,14 @@
 
 namespace crookie {
 
-  class IEventHandler;
+class IEventHandler;
 
 /**
  * @brief Event base interface
  *
  * Any EventBus Event needs to extend this class, to expose a public static
  * TYPE member of type EventType and to declare some other fancy stuff that you
- * can completely ignore by using the MACRO #BUS_EVENT(EventClass), and filling
+ * can completely ignore by using the MACRO #EVENTBUS_EVENT(EventClass), and filling
  * its argument with your event class-name, as the axample below.
  *
  * @code{.cpp}
@@ -22,7 +22,7 @@ namespace crookie {
  
    class MyEvent : public IEvent
    {
-       BUS_EVENT(MyEvent)
+       EVENTBUS_EVENT(MyEvent)
  
    public:
  
@@ -58,7 +58,7 @@ public:
 
     //! @brief Routine demanded to call the handler on last instance.
     //! @param handler [in]     handler on whom call onEvent(ActualEventType&)
-    //! @note This pure virtual method is implemented by #BUS_EVENT(EventClass)
+    //! @note This pure virtual method is implemented by #EVENTBUS_EVENT(EventClass)
     virtual void dispatch(IEventHandler& handler) const = 0;
 };
 
@@ -69,17 +69,18 @@ public:
 
     //! @brief Default constructor
     EventType()
-        : type_(typecounter_++) { }
+        : m_type(m_typecounter++) { }
 
     //! @brief int implicit conversion operator
-    operator int() const { return type_; }
+    operator int() const { return m_type; }
 
 private:
 
-    static int typecounter_;
-    int type_;
+    static int m_typecounter;
+    int m_type;
 };
   
-}
+} // end of namespace
+
 
 #endif

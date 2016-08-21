@@ -16,33 +16,33 @@ namespace crookie {
   {
   public:
 
-      //! @brief Subscribes this handler to given bus.
-      //! @param [in] bus   Bus on which subscribe for \a EventType events.
-      AEventHandler(EventBus& bus)
-          : owner_(bus.subscribe(*this))
-      { }
+    //! @brief Subscribes this handler to given bus.
+    //! @param [in] bus   Bus on which subscribe for \a EventType events.
+    explicit AEventHandler(EventBus& bus)
+        : owner_(bus.subscribe(*this))
+    { }
 
-      //! @brief Unsubscribe from EventBus.
-      ~AEventHandler() { unsubscribe(); }
+    //! @brief Unsubscribe from EventBus.
+    ~AEventHandler() { unsubscribe(); }
 
-      //! @brief Return the type of handled events
-      virtual int type() const { return EventType::TYPE; }
+    //! @brief Return the type of handled events
+    virtual int type() const { return EventType::TYPE; }
 
-      //! @brief Handler routine.
-      virtual void onEvent(const EventType& event) = 0;
+    //! @brief Handler routine.
+    virtual void onEvent(const EventType& event) = 0;
 
   protected:
 
-      //! @brief Early unsubscribe from EventBus.
-      //! @warning NO re-subscribe is allowed.
-      bool unsubscribe() { return owner_.unsubscribe(); }
+    //! @brief Early unsubscribe from EventBus.
+    //! @warning NO re-subscribe is allowed.
+    bool unsubscribe() { return owner_.unsubscribe(); }
 
   private:
 
       EventBus::Account owner_;
   };
 
-} // end of namespace DBus
+} // end of namespace 
 
 
 

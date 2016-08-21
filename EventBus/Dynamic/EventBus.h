@@ -45,28 +45,28 @@ namespace crookie {
 
     //! @brief Association to a subscribers list.
     //! An instance of this class is returned by add(), you should keep a copy
-    //! of that instance to simplify the
+    //! of that instance to simplify the management of the subscription
     class Account
     {
-        std::shared_ptr< List > list_;
-        IBusHandler* handler_;
+        std::shared_ptr< List > m_list;
+        IBusHandler* m_handler;
 
     public:
 
         explicit Account(std::shared_ptr<List> list, IBusHandler* handler)
-            : list_(list), handler_(handler)
+            : m_list(list), m_handler(handler)
         { }
 
         //! @brief Remove its handler from the subscriber list.
-        void unsubscribe()
-        { this->list_->remove(handler_); }
+        bool unsubscribe()
+        { m_list->remove(m_handler); return true; }
     };
 
   public: /*interface*/
 
     //! @brief Construct a new bus with no handlers registered
     EventBus()
-        : firingDepth_(0)
+        : m_firingDepth(0)
     { }
 
     //! Clear this bus subscriber list, locking the operation.
@@ -76,7 +76,7 @@ namespace crookie {
     //! Dispatching depth represents how deep we are in the EventBus::fire
     //! recursion, which happen whenever an event handler fire another
     //! event on the same bus.
-    int getCurrentDepth() const { return firingDepth_; }
+    int getCurrentDepth() const { return m_firingDepth; }
 
     //! @brief Subscribe given handler for events of given type.
     //! If subscriber list already contains given @a handler it does nothing
@@ -91,20 +91,22 @@ namespace crookie {
     //! @brief Remove given @a handler from subscribers list (if present).
     //! @param [in] handler     pointer to handler to remove (if NULL does
     //!                         nothing.)
-    void unsubscribe(IBusHandler* handler);
+    //! @return True if unsubscribed successfully, false otherwise.
+    bool unsubscribe(IBusHandler* handler);
 
-    //! @brief Sends given event to all subscribed handler.
+    //! @brief Sends given event to all subscribed handlers.
     void fire(const Event& event);
 
   protected: /*types and data*/
     
     typedef std::map< int, std::shared_ptr< List > > Registry;
+      
 
-    std::recursive_mutex mutex_;    //!< mutex semaphore
+    std::recursive_mutex m_mutex;    //!< mutex semaphore
 
-    Registry handlers_;             //!< subscribers map
+    Registry m_handlers;             //!< subscribers map
 
-    int firingDepth_;               //!< current firing depth
+    int m_firingDepth;               //!< current firing depth
   };
 
   // there will be a copy of this function for EACH Event type in your project
@@ -112,19 +114,19 @@ namespace crookie {
   template < class EventClass >
   EventBus::Account EventBus::subscribe(AEventHandler< EventClass >& handler)
   {
-      std::unique_lock<std::recursive_mutex> lock(mutex_);
-      Registry::iterator it = handlers_.find(EventClass::TYPE);
+      std::unique_lock<std::recursive_mutex> lock(m_mutex);
+      Registry::iterator it = m_handlers.find(EventClass::TYPE);
     
       std::shared_ptr<List> subscribers;
-      if (it == handlers_.end()) // null pointer on insertion
+      if (it == m_handlers.end()) // null pointer on insertion
       {
           subscribers.reset(new List());
-          handlers_.insert(EventClass::TYPE, subscribers);
+          m_handlers.insert(std::make_pair(EventClass::TYPE, subscribers));
       }
       else
         subscribers = it->second;
 
-      if (!subscribers->contains(&handler))
+//      if (!subscribers->contains(&handler))
           subscribers->add(&handler);
 
       return Account(subscribers, &handler);

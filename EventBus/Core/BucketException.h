@@ -17,7 +17,7 @@ namespace crookie {
    * handlers, thus more than one exceptions may be raised.
    *
    * You should catch this exception type on each EventBus::dispatch() call but
-   * you can defer it to any external environment if you will.
+   * you can defer it to any external environment when applicable.
    *
    * @tparam Source   Base type of exception sources (i.e.: event handlers)
    */

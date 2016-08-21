@@ -20,7 +20,28 @@
 		5260848718DEF045002071DB /* EventBus.h in Headers */ = {isa = PBXBuildFile; fileRef = 5260848318DEF045002071DB /* EventBus.h */; };
 		52C92DCC18D4D250005D2ACC /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 52C92DCB18D4D250005D2ACC /* main.cpp */; };
 		52C92DCE18D4D250005D2ACC /* testexe.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 52C92DCD18D4D250005D2ACC /* testexe.1 */; };
+		52D261C41D68BC1A00870E30 /* EventBusUnitTest.mm in Sources */ = {isa = PBXBuildFile; fileRef = 52D261C31D68BC1A00870E30 /* EventBusUnitTest.mm */; };
+		52D261C61D68BC1A00870E30 /* libcrookie.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52C92DBC18D4C68A005D2ACC /* libcrookie.a */; };
+		52D261D11D68C1C800870E30 /* DynamicBus.h in Headers */ = {isa = PBXBuildFile; fileRef = 52D261D01D68C1C800870E30 /* DynamicBus.h */; };
+		52D261D41D69965D00870E30 /* BasicFunctionalTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 52D261D31D69965D00870E30 /* BasicFunctionalTest.cpp */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		52D261C71D68BC1A00870E30 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 52C92DB418D4C689005D2ACC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 52C92DBB18D4C689005D2ACC;
+			remoteInfo = crookie;
+		};
+		52D261CE1D68BF2400870E30 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 52C92DB418D4C689005D2ACC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 52C92DBB18D4C689005D2ACC;
+			remoteInfo = crookie;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		52C92DC718D4D250005D2ACC /* CopyFiles */ = {
@@ -40,14 +61,14 @@
 		524CF69D18DAF7800089F45D /* Doxyfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Doxyfile; sourceTree = "<group>"; };
 		5260846E18DEEFBC002071DB /* BucketException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BucketException.h; sourceTree = "<group>"; };
 		5260846F18DEEFBC002071DB /* IEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IEvent.h; sourceTree = "<group>"; };
-		5260847018DEEFBC002071DB /* IEventHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IEventHandler.h; sourceTree = "<group>"; };
+		5260847018DEEFBC002071DB /* IEventHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = IEventHandler.h; sourceTree = "<group>"; tabWidth = 2; usesTabs = 0; };
 		5260847118DEEFBC002071DB /* MonitoredCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonitoredCollection.h; sourceTree = "<group>"; };
 		5260847A18DEF036002071DB /* ActiveObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ActiveObject.h; path = Static/ActiveObject.h; sourceTree = "<group>"; };
 		5260847B18DEF036002071DB /* AEventHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AEventHandler.h; path = Static/AEventHandler.h; sourceTree = "<group>"; };
 		5260847C18DEF036002071DB /* StaticBus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StaticBus.h; path = Static/StaticBus.h; sourceTree = "<group>"; };
 		5260848018DEF045002071DB /* ActiveObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ActiveObject.h; path = Dynamic/ActiveObject.h; sourceTree = "<group>"; };
-		5260848118DEF045002071DB /* AEventHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AEventHandler.h; path = Dynamic/AEventHandler.h; sourceTree = "<group>"; };
-		5260848218DEF045002071DB /* EventBus.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = EventBus.cpp; path = Dynamic/EventBus.cpp; sourceTree = "<group>"; };
+		5260848118DEF045002071DB /* AEventHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = AEventHandler.h; path = Dynamic/AEventHandler.h; sourceTree = "<group>"; tabWidth = 2; };
+		5260848218DEF045002071DB /* EventBus.cpp */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; name = EventBus.cpp; path = Dynamic/EventBus.cpp; sourceTree = "<group>"; tabWidth = 2; };
 		5260848318DEF045002071DB /* EventBus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventBus.h; path = Dynamic/EventBus.h; sourceTree = "<group>"; };
 		52C92DBC18D4C68A005D2ACC /* libcrookie.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libcrookie.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		52C92DC318D4C6D3005D2ACC /* LockedPtr.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; path = LockedPtr.h; sourceTree = "<group>"; };
@@ -55,6 +76,12 @@
 		52C92DC918D4D250005D2ACC /* testexe */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = testexe; sourceTree = BUILT_PRODUCTS_DIR; };
 		52C92DCB18D4D250005D2ACC /* main.cpp */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; tabWidth = 2; };
 		52C92DCD18D4D250005D2ACC /* testexe.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = testexe.1; sourceTree = "<group>"; };
+		52D261C11D68BC1A00870E30 /* EventBusUnitTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EventBusUnitTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		52D261C31D68BC1A00870E30 /* EventBusUnitTest.mm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; path = EventBusUnitTest.mm; sourceTree = "<group>"; };
+		52D261C51D68BC1A00870E30 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		52D261D01D68C1C800870E30 /* DynamicBus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DynamicBus.h; sourceTree = "<group>"; };
+		52D261D21D68CB9900870E30 /* BasicFunctionalTest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BasicFunctionalTest.h; sourceTree = "<group>"; };
+		52D261D31D69965D00870E30 /* BasicFunctionalTest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BasicFunctionalTest.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +96,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		52D261BE1D68BC1A00870E30 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				52D261C61D68BC1A00870E30 /* libcrookie.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -90,6 +125,7 @@
 				5260847918DEF021002071DB /* Dynamic */,
 				5260847818DEF017002071DB /* Static */,
 				5260847718DEEFEE002071DB /* Core */,
+				52D261D01D68C1C800870E30 /* DynamicBus.h */,
 			);
 			path = EventBus;
 			sourceTree = "<group>";
@@ -134,6 +170,7 @@
 				5260847618DEEFD1002071DB /* EventBus */,
 				524CF69C18DAF1190089F45D /* MultiThreading */,
 				52C92DCA18D4D250005D2ACC /* testexe */,
+				52D261C21D68BC1A00870E30 /* EventBusUnitTest */,
 				52C92DBD18D4C68A005D2ACC /* Products */,
 			);
 			sourceTree = "<group>";
@@ -143,6 +180,7 @@
 			children = (
 				52C92DBC18D4C68A005D2ACC /* libcrookie.a */,
 				52C92DC918D4D250005D2ACC /* testexe */,
+				52D261C11D68BC1A00870E30 /* EventBusUnitTest.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -154,6 +192,17 @@
 				52C92DCD18D4D250005D2ACC /* testexe.1 */,
 			);
 			path = testexe;
+			sourceTree = "<group>";
+		};
+		52D261C21D68BC1A00870E30 /* EventBusUnitTest */ = {
+			isa = PBXGroup;
+			children = (
+				52D261C31D68BC1A00870E30 /* EventBusUnitTest.mm */,
+				52D261C51D68BC1A00870E30 /* Info.plist */,
+				52D261D21D68CB9900870E30 /* BasicFunctionalTest.h */,
+				52D261D31D69965D00870E30 /* BasicFunctionalTest.cpp */,
+			);
+			path = EventBusUnitTest;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -169,6 +218,7 @@
 				5260847318DEEFBC002071DB /* IEvent.h in Headers */,
 				5260847418DEEFBC002071DB /* IEventHandler.h in Headers */,
 				5260847E18DEF036002071DB /* AEventHandler.h in Headers */,
+				52D261D11D68C1C800870E30 /* DynamicBus.h in Headers */,
 				5260847D18DEF036002071DB /* ActiveObject.h in Headers */,
 				5260848518DEF045002071DB /* AEventHandler.h in Headers */,
 				5260848718DEF045002071DB /* EventBus.h in Headers */,
@@ -207,11 +257,30 @@
 			buildRules = (
 			);
 			dependencies = (
+				52D261CF1D68BF2400870E30 /* PBXTargetDependency */,
 			);
 			name = testexe;
 			productName = testexe;
 			productReference = 52C92DC918D4D250005D2ACC /* testexe */;
 			productType = "com.apple.product-type.tool";
+		};
+		52D261C01D68BC1A00870E30 /* EventBusUnitTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 52D261CB1D68BC1A00870E30 /* Build configuration list for PBXNativeTarget "EventBusUnitTest" */;
+			buildPhases = (
+				52D261BD1D68BC1A00870E30 /* Sources */,
+				52D261BE1D68BC1A00870E30 /* Frameworks */,
+				52D261BF1D68BC1A00870E30 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				52D261C81D68BC1A00870E30 /* PBXTargetDependency */,
+			);
+			name = EventBusUnitTest;
+			productName = EventBusUnitTest;
+			productReference = 52D261C11D68BC1A00870E30 /* EventBusUnitTest.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -219,8 +288,13 @@
 		52C92DB418D4C689005D2ACC /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = "Paolo Bernini";
+				TargetAttributes = {
+					52D261C01D68BC1A00870E30 = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
+				};
 			};
 			buildConfigurationList = 52C92DB718D4C689005D2ACC /* Build configuration list for PBXProject "crookie" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -236,9 +310,20 @@
 			targets = (
 				52C92DBB18D4C689005D2ACC /* crookie */,
 				52C92DC818D4D250005D2ACC /* testexe */,
+				52D261C01D68BC1A00870E30 /* EventBusUnitTest */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		52D261BF1D68BC1A00870E30 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		52C92DB818D4C689005D2ACC /* Sources */ = {
@@ -257,7 +342,29 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		52D261BD1D68BC1A00870E30 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				52D261C41D68BC1A00870E30 /* EventBusUnitTest.mm in Sources */,
+				52D261D41D69965D00870E30 /* BasicFunctionalTest.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		52D261C81D68BC1A00870E30 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 52C92DBB18D4C689005D2ACC /* crookie */;
+			targetProxy = 52D261C71D68BC1A00870E30 /* PBXContainerItemProxy */;
+		};
+		52D261CF1D68BF2400870E30 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 52C92DBB18D4C689005D2ACC /* crookie */;
+			targetProxy = 52D261CE1D68BF2400870E30 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		52C92DBE18D4C68A005D2ACC /* Debug */ = {
@@ -276,6 +383,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
@@ -331,6 +439,7 @@
 		52C92DC118D4C68A005D2ACC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				EXECUTABLE_PREFIX = lib;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -339,6 +448,7 @@
 		52C92DC218D4C68A005D2ACC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				EXECUTABLE_PREFIX = lib;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -362,6 +472,53 @@
 			};
 			name = Release;
 		};
+		52D261C91D68BC1A00870E30 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				HEADER_SEARCH_PATHS = EventBus/;
+				INFOPLIST_FILE = EventBusUnitTest/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = org.nihil84.EventBusUnitTest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "";
+			};
+			name = Debug;
+		};
+		52D261CA1D68BC1A00870E30 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				HEADER_SEARCH_PATHS = EventBus/;
+				INFOPLIST_FILE = EventBusUnitTest/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = org.nihil84.EventBusUnitTest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -372,7 +529,7 @@
 				52C92DBF18D4C68A005D2ACC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		52C92DC018D4C68A005D2ACC /* Build configuration list for PBXNativeTarget "crookie" */ = {
 			isa = XCConfigurationList;
@@ -381,7 +538,7 @@
 				52C92DC218D4C68A005D2ACC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		52C92DCF18D4D250005D2ACC /* Build configuration list for PBXNativeTarget "testexe" */ = {
 			isa = XCConfigurationList;
@@ -390,7 +547,16 @@
 				52C92DD118D4D250005D2ACC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
+		};
+		52D261CB1D68BC1A00870E30 /* Build configuration list for PBXNativeTarget "EventBusUnitTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				52D261C91D68BC1A00870E30 /* Debug */,
+				52D261CA1D68BC1A00870E30 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};

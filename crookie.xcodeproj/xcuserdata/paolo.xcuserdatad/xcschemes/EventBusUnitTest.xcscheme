@@ -8,29 +8,15 @@
       <BuildActionEntries>
          <BuildActionEntry
             buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "52C92DBB18D4C689005D2ACC"
-               BuildableName = "libcrookie.a"
-               BlueprintName = "crookie"
-               ReferencedContainer = "container:crookie.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
+            buildForRunning = "NO"
             buildForProfiling = "NO"
             buildForArchiving = "NO"
             buildForAnalyzing = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "52C92DC818D4D250005D2ACC"
-               BuildableName = "testexe"
-               BlueprintName = "testexe"
+               BlueprintIdentifier = "52D261C01D68BC1A00870E30"
+               BuildableName = "EventBusUnitTest.xctest"
+               BlueprintName = "EventBusUnitTest"
                ReferencedContainer = "container:crookie.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -42,13 +28,23 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "52D261C01D68BC1A00870E30"
+               BuildableName = "EventBusUnitTest.xctest"
+               BlueprintName = "EventBusUnitTest"
+               ReferencedContainer = "container:crookie.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "52C92DC818D4D250005D2ACC"
-            BuildableName = "testexe"
-            BlueprintName = "testexe"
+            BlueprintIdentifier = "52D261C01D68BC1A00870E30"
+            BuildableName = "EventBusUnitTest.xctest"
+            BlueprintName = "EventBusUnitTest"
             ReferencedContainer = "container:crookie.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -65,16 +61,6 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "52C92DC818D4D250005D2ACC"
-            BuildableName = "testexe"
-            BlueprintName = "testexe"
-            ReferencedContainer = "container:crookie.xcodeproj">
-         </BuildableReference>
-      </BuildableProductRunnable>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -84,15 +70,6 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "52C92DBB18D4C689005D2ACC"
-            BuildableName = "libcrookie.a"
-            BlueprintName = "crookie"
-            ReferencedContainer = "container:crookie.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
