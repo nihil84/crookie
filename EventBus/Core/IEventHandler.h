@@ -1,7 +1,7 @@
 #ifndef IEVENTHANDLER_H
 #define IEVENTHANDLER_H
 
-#include "../Dynamic/EventBus.h"
+#include "../EventBus.h"
 
 
 namespace crookie {

@@ -22,7 +22,6 @@
 		52C92DCE18D4D250005D2ACC /* testexe.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 52C92DCD18D4D250005D2ACC /* testexe.1 */; };
 		52D261C41D68BC1A00870E30 /* EventBusUnitTest.mm in Sources */ = {isa = PBXBuildFile; fileRef = 52D261C31D68BC1A00870E30 /* EventBusUnitTest.mm */; };
 		52D261C61D68BC1A00870E30 /* libcrookie.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52C92DBC18D4C68A005D2ACC /* libcrookie.a */; };
-		52D261D11D68C1C800870E30 /* DynamicBus.h in Headers */ = {isa = PBXBuildFile; fileRef = 52D261D01D68C1C800870E30 /* DynamicBus.h */; };
 		52D261D41D69965D00870E30 /* BasicFunctionalTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 52D261D31D69965D00870E30 /* BasicFunctionalTest.cpp */; };
 		52D261D61D6B58E700870E30 /* EventBase.h in Headers */ = {isa = PBXBuildFile; fileRef = 52D261D51D6B58E700870E30 /* EventBase.h */; };
 /* End PBXBuildFile section */
@@ -67,10 +66,10 @@
 		5260847A18DEF036002071DB /* ActiveObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ActiveObject.h; path = Static/ActiveObject.h; sourceTree = "<group>"; };
 		5260847B18DEF036002071DB /* AEventHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AEventHandler.h; path = Static/AEventHandler.h; sourceTree = "<group>"; };
 		5260847C18DEF036002071DB /* StaticBus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StaticBus.h; path = Static/StaticBus.h; sourceTree = "<group>"; };
-		5260848018DEF045002071DB /* ActiveObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ActiveObject.h; path = Dynamic/ActiveObject.h; sourceTree = "<group>"; };
-		5260848118DEF045002071DB /* AEventHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = AEventHandler.h; path = Dynamic/AEventHandler.h; sourceTree = "<group>"; tabWidth = 2; };
-		5260848218DEF045002071DB /* EventBus.cpp */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; name = EventBus.cpp; path = Dynamic/EventBus.cpp; sourceTree = "<group>"; tabWidth = 2; };
-		5260848318DEF045002071DB /* EventBus.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = EventBus.h; path = Dynamic/EventBus.h; sourceTree = "<group>"; tabWidth = 2; };
+		5260848018DEF045002071DB /* ActiveObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActiveObject.h; sourceTree = "<group>"; };
+		5260848118DEF045002071DB /* AEventHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = AEventHandler.h; sourceTree = "<group>"; tabWidth = 2; };
+		5260848218DEF045002071DB /* EventBus.cpp */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = EventBus.cpp; sourceTree = "<group>"; tabWidth = 2; };
+		5260848318DEF045002071DB /* EventBus.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = EventBus.h; sourceTree = "<group>"; tabWidth = 2; };
 		52C92DBC18D4C68A005D2ACC /* libcrookie.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libcrookie.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		52C92DC318D4C6D3005D2ACC /* LockedPtr.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; path = LockedPtr.h; sourceTree = "<group>"; };
 		52C92DC418D4CD18005D2ACC /* SimpleLock.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimpleLock.h; sourceTree = "<group>"; };
@@ -80,7 +79,6 @@
 		52D261C11D68BC1A00870E30 /* EventBusUnitTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EventBusUnitTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		52D261C31D68BC1A00870E30 /* EventBusUnitTest.mm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; path = EventBusUnitTest.mm; sourceTree = "<group>"; };
 		52D261C51D68BC1A00870E30 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		52D261D01D68C1C800870E30 /* DynamicBus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DynamicBus.h; sourceTree = "<group>"; };
 		52D261D21D68CB9900870E30 /* BasicFunctionalTest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BasicFunctionalTest.h; sourceTree = "<group>"; };
 		52D261D31D69965D00870E30 /* BasicFunctionalTest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BasicFunctionalTest.cpp; sourceTree = "<group>"; };
 		52D261D51D6B58E700870E30 /* EventBase.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.h; path = EventBase.h; sourceTree = "<group>"; tabWidth = 2; };
@@ -124,10 +122,12 @@
 		5260847618DEEFD1002071DB /* EventBus */ = {
 			isa = PBXGroup;
 			children = (
-				5260847918DEF021002071DB /* Dynamic */,
 				5260847818DEF017002071DB /* Static */,
 				5260847718DEEFEE002071DB /* Core */,
-				52D261D01D68C1C800870E30 /* DynamicBus.h */,
+				5260848018DEF045002071DB /* ActiveObject.h */,
+				5260848118DEF045002071DB /* AEventHandler.h */,
+				5260848318DEF045002071DB /* EventBus.h */,
+				5260848218DEF045002071DB /* EventBus.cpp */,
 				52D261D51D6B58E700870E30 /* EventBase.h */,
 			);
 			path = EventBus;
@@ -152,17 +152,6 @@
 				5260847C18DEF036002071DB /* StaticBus.h */,
 			);
 			name = Static;
-			sourceTree = "<group>";
-		};
-		5260847918DEF021002071DB /* Dynamic */ = {
-			isa = PBXGroup;
-			children = (
-				5260848018DEF045002071DB /* ActiveObject.h */,
-				5260848118DEF045002071DB /* AEventHandler.h */,
-				5260848218DEF045002071DB /* EventBus.cpp */,
-				5260848318DEF045002071DB /* EventBus.h */,
-			);
-			name = Dynamic;
 			sourceTree = "<group>";
 		};
 		52C92DB318D4C689005D2ACC = {
@@ -221,7 +210,6 @@
 				5260847318DEEFBC002071DB /* IEvent.h in Headers */,
 				5260847418DEEFBC002071DB /* IEventHandler.h in Headers */,
 				5260847E18DEF036002071DB /* AEventHandler.h in Headers */,
-				52D261D11D68C1C800870E30 /* DynamicBus.h in Headers */,
 				5260847D18DEF036002071DB /* ActiveObject.h in Headers */,
 				5260848518DEF045002071DB /* AEventHandler.h in Headers */,
 				5260848718DEF045002071DB /* EventBus.h in Headers */,

@@ -10,7 +10,7 @@
 #define EVENTBASE_H
 
 #include "Core/IEvent.h"
-#include "Dynamic/AEventHandler.h"
+#include "AEventHandler.h"
 
 namespace crookie {
   

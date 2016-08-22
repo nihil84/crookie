@@ -9,8 +9,8 @@
 
 #include "BasicFunctionalTest.h"
 
-#include <Dynamic/AEventHandler.h>
-#include <DynamicBus.h>
+#include <AEventHandler.h>
+#include <EventBus.h>
 #include <EventBase.h>
 
 #include <iostream>

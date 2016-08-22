@@ -1,7 +1,7 @@
 #ifndef DYNAMIC_AEVENTHANDLER_HPP
 #define DYNAMIC_AEVENTHANDLER_HPP
 
-#include "../Core/IEventHandler.h"
+#include "Core/IEventHandler.h"
 #include "EventBus.h"
 
 
