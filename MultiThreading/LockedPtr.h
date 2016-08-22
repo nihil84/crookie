@@ -90,7 +90,7 @@ namespace crookie {
     //! @param [in] data    pointer to shared data structure.
     //! @param [in] mutex   mutex to use to acquire/release locks on given data.
     LockedPtr(DataPtr data, Mutex& mutex) noexcept
-      : data_(data), m_mutex(mutex)
+      : m_data(data), m_mutex(mutex)
     {
       Locker::lock(m_mutex);
     }
@@ -98,7 +98,7 @@ namespace crookie {
     //! @brief Unlock the data mutex
     ~LockedPtr()
     {
-      if (data_ != NULL) Locker::unlock(m_mutex);
+      if (m_data != nullptr) Locker::unlock(m_mutex);
     }
     
     
@@ -107,37 +107,37 @@ namespace crookie {
     //! @brief Move constructor. Ensure data ownership from temporary objects
     //! to the effective reference instance.
     LockedPtr(LockedPtr&& temp)
-      : data_(temp.data_), m_mutex(temp.mutex_)
+      : m_data(temp.m_data), m_mutex(temp.m_mutex)
     {
-      temp.data_ = NULL;
+      temp.m_data = nullptr;
     }
     
     //! @brief Move assignement operator. Ensure data ownership from temporary
     //! objects to the effective reference instance.
     LockedPtr& operator =(LockedPtr&& temp)
     {
-      this->data_ = temp.data_;
-      this->mutex_ = temp.mutex_;
-      temp.data_ = NULL;
+      this->m_data = temp.m_data;
+      this->m_mutex = temp.m_mutex;
+      temp.m_data = nullptr;
     }
     
     // data access operators
     
     //! Return const pointer to referenced data object.
-    const Data* get() const noexcept { return data_; }
+    const Data* get() const noexcept { return m_data; }
     
     //! Return pointer to refereced data object
-    Data* get() noexcept { return data_; }
+    Data* get() noexcept { return m_data; }
     
     //! const arrow operator
-    const Data* operator ->() const { return data_; }
+    const Data* operator ->() const { return m_data; }
     
     //! arrow operator
-    Data* operator ->() { return data_; }
+    Data* operator ->() { return m_data; }
     
   private:
     
-    DataPtr data_;  //!< Pointer to shared data object
+    DataPtr m_data;  //!< Pointer to shared data object
     Mutex& m_mutex;  //!< Mutex instance for locking/unlocking operations
     
     

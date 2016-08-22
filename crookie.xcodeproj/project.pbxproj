@@ -24,6 +24,7 @@
 		52D261C61D68BC1A00870E30 /* libcrookie.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52C92DBC18D4C68A005D2ACC /* libcrookie.a */; };
 		52D261D11D68C1C800870E30 /* DynamicBus.h in Headers */ = {isa = PBXBuildFile; fileRef = 52D261D01D68C1C800870E30 /* DynamicBus.h */; };
 		52D261D41D69965D00870E30 /* BasicFunctionalTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 52D261D31D69965D00870E30 /* BasicFunctionalTest.cpp */; };
+		52D261D61D6B58E700870E30 /* EventBase.h in Headers */ = {isa = PBXBuildFile; fileRef = 52D261D51D6B58E700870E30 /* EventBase.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,17 +60,17 @@
 /* Begin PBXFileReference section */
 		524CF69B18D774C00089F45D /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.md; sourceTree = SOURCE_ROOT; };
 		524CF69D18DAF7800089F45D /* Doxyfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Doxyfile; sourceTree = "<group>"; };
-		5260846E18DEEFBC002071DB /* BucketException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BucketException.h; sourceTree = "<group>"; };
-		5260846F18DEEFBC002071DB /* IEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IEvent.h; sourceTree = "<group>"; };
+		5260846E18DEEFBC002071DB /* BucketException.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.h; path = BucketException.h; sourceTree = "<group>"; tabWidth = 2; };
+		5260846F18DEEFBC002071DB /* IEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = IEvent.h; sourceTree = "<group>"; tabWidth = 2; };
 		5260847018DEEFBC002071DB /* IEventHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = IEventHandler.h; sourceTree = "<group>"; tabWidth = 2; usesTabs = 0; };
-		5260847118DEEFBC002071DB /* MonitoredCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonitoredCollection.h; sourceTree = "<group>"; };
+		5260847118DEEFBC002071DB /* MonitoredCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = MonitoredCollection.h; sourceTree = "<group>"; tabWidth = 2; };
 		5260847A18DEF036002071DB /* ActiveObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ActiveObject.h; path = Static/ActiveObject.h; sourceTree = "<group>"; };
 		5260847B18DEF036002071DB /* AEventHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AEventHandler.h; path = Static/AEventHandler.h; sourceTree = "<group>"; };
 		5260847C18DEF036002071DB /* StaticBus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StaticBus.h; path = Static/StaticBus.h; sourceTree = "<group>"; };
 		5260848018DEF045002071DB /* ActiveObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ActiveObject.h; path = Dynamic/ActiveObject.h; sourceTree = "<group>"; };
 		5260848118DEF045002071DB /* AEventHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = AEventHandler.h; path = Dynamic/AEventHandler.h; sourceTree = "<group>"; tabWidth = 2; };
 		5260848218DEF045002071DB /* EventBus.cpp */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; name = EventBus.cpp; path = Dynamic/EventBus.cpp; sourceTree = "<group>"; tabWidth = 2; };
-		5260848318DEF045002071DB /* EventBus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventBus.h; path = Dynamic/EventBus.h; sourceTree = "<group>"; };
+		5260848318DEF045002071DB /* EventBus.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = EventBus.h; path = Dynamic/EventBus.h; sourceTree = "<group>"; tabWidth = 2; };
 		52C92DBC18D4C68A005D2ACC /* libcrookie.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libcrookie.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		52C92DC318D4C6D3005D2ACC /* LockedPtr.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; path = LockedPtr.h; sourceTree = "<group>"; };
 		52C92DC418D4CD18005D2ACC /* SimpleLock.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimpleLock.h; sourceTree = "<group>"; };
@@ -82,6 +83,7 @@
 		52D261D01D68C1C800870E30 /* DynamicBus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DynamicBus.h; sourceTree = "<group>"; };
 		52D261D21D68CB9900870E30 /* BasicFunctionalTest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BasicFunctionalTest.h; sourceTree = "<group>"; };
 		52D261D31D69965D00870E30 /* BasicFunctionalTest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BasicFunctionalTest.cpp; sourceTree = "<group>"; };
+		52D261D51D6B58E700870E30 /* EventBase.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.h; path = EventBase.h; sourceTree = "<group>"; tabWidth = 2; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +128,7 @@
 				5260847818DEF017002071DB /* Static */,
 				5260847718DEEFEE002071DB /* Core */,
 				52D261D01D68C1C800870E30 /* DynamicBus.h */,
+				52D261D51D6B58E700870E30 /* EventBase.h */,
 			);
 			path = EventBus;
 			sourceTree = "<group>";
@@ -222,6 +225,7 @@
 				5260847D18DEF036002071DB /* ActiveObject.h in Headers */,
 				5260848518DEF045002071DB /* AEventHandler.h in Headers */,
 				5260848718DEF045002071DB /* EventBus.h in Headers */,
+				52D261D61D6B58E700870E30 /* EventBase.h in Headers */,
 				5260848418DEF045002071DB /* ActiveObject.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

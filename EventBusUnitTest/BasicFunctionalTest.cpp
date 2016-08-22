@@ -11,32 +11,20 @@
 
 #include <Dynamic/AEventHandler.h>
 #include <DynamicBus.h>
-#include <Core/IEvent.h>
+#include <EventBase.h>
 
 #include <iostream>
 #include <string>
 
 using namespace std;
 
-class TestEvent : public crookie::IEvent
+class TestEvent : public crookie::EventBase<TestEvent>
 {
 public:
-    
-    typedef crookie::AEventHandler<TestEvent> SpecificHandler;
-    
-    static const crookie::EventType TYPE;
     
     TestEvent(const std::string& msg)
         : m_msg(msg)
     { }
-
-    int type() const { return TYPE; }
-    
-    virtual void dispatch(crookie::IEventHandler& handler) const
-    {
-        SpecificHandler& specific = reinterpret_cast<SpecificHandler&>(handler);
-        specific.onEvent(*this);
-    }
     
     const std::string& message() const { return m_msg; }
     
@@ -44,8 +32,6 @@ private:
     
     std::string m_msg;
 };
-
-const crookie::EventType TestEvent::TYPE;
 
 
 class TestEventHandler : public crookie::AEventHandler<TestEvent>
@@ -82,7 +68,7 @@ bool BasicFunctionalTest::testBasicFunctionality()
 {
     TestEventHandler handler(*m_bus);
     
-    m_bus->fire(crookie::EventBus::Event(new TestEvent("## try this ##")));
+    m_bus->dispatch(crookie::EventBus::Event(new TestEvent("## try this ##")));
     
     return handler.gotit();
 }

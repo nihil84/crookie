@@ -8,131 +8,76 @@
 #include <memory>
 #include <mutex>
 #include <list>
-#include <map>
+#include <unordered_map>
 
 
 namespace crookie {
 
-  // forward declarations
+/**
+ * @brief Message bus business core.
+ *
+ * You should have not to bother with any of its methods except for fire(),
+ * which allow you to send events to all the handlers of your event subscribed
+ * to your bus instance.
+ *
+ * @warning EventBus instance HAS TO BE fully initialized BEFORE any Handler,
+ * thus you cannot instance it as a member of Handler classes.
+ */
+class EventBus
+{
+public:
 
-  template < class EventClass > class AEventHandler;
+  //! @brief Convenient typename for smart pointers to Event instances.
+  typedef std::shared_ptr<IEvent> Event;
 
-  // code
-
-  /**
-   * @brief Message bus business core.
-   *
-   * You should have not to bother with any of its methods except for fire(),
-   * which allow you to send events to all the handlers of your event subscribed
-   * to your bus instance.
-   *
-   * @warning EventBus instance HAS TO BE fully initialized BEFORE any Handler,
-   * thus you cannot instance it as a member of Handler classes.
-   */
-  class EventBus
-  {
-  public: /*types*/
-
-    //! @brief Convenient typename for smart pointers to Event instances.
-    typedef std::shared_ptr<IEvent> Event;
-
-    //! @brief Event handlers base interface type
-    typedef IEventHandler IBusHandler;
-
-    //! @brief Type of subscribers list
-    typedef MonitoredCollection< IBusHandler* > List;
+  //! @brief Type of subscribers list
+  typedef MonitoredCollection< IEventHandler* > List;
 
 
-    //! @brief Association to a subscribers list.
-    //! An instance of this class is returned by add(), you should keep a copy
-    //! of that instance to simplify the management of the subscription
-    class Account
-    {
-        std::shared_ptr< List > m_list;
-        IBusHandler* m_handler;
+  //! @brief Construct a new bus with no handlers registered
+  EventBus() { }
+  
+  //! Clear this bus subscriber list, locking the operation.
+  ~EventBus();
+  
+  EventBus(const EventBus&) = delete;
+  EventBus& operator =(const EventBus&) = delete;
 
-    public:
+  //! @brief Return current dispatching depth.
+  //! Dispatching depth represents how deep we are in the EventBus::fire
+  //! recursion, which happen whenever an event handler fire another
+  //! event on the same bus.
+  int getCurrentDepth() const { return m_firingDepth; }
 
-        explicit Account(std::shared_ptr<List> list, IBusHandler* handler)
-            : m_list(list), m_handler(handler)
-        { }
+  //! @brief Subscribe given handler for events of given type.
+  //! Multiple subscription of the same handler are allowed and it will result
+  //! in delivering the same message as many times as the subscriptions.
+  //! @param [in] type      event type (integer returned by Event::type());
+  //! @param [in] handler   event handler instance of the subscriber
+  void subscribe(int type, IEventHandler* handler);
+  
+  //! @brief Remove given @p handler from subscribers list (if present).
+  //! @param [in] handler     pointer to handler to remove (if nullptr does
+  //!                         nothing.)
+  //! @return True if unsubscribed successfully, false otherwise.
+  bool unsubscribe(IEventHandler* handler);
 
-        //! @brief Remove its handler from the subscriber list.
-        bool unsubscribe()
-        { m_list->remove(m_handler); return true; }
-    };
+  //! @brief Sends given event to all subscribed handlers.
+  void dispatch(const Event& event);
 
-  public: /*interface*/
-
-    //! @brief Construct a new bus with no handlers registered
-    EventBus()
-        : m_firingDepth(0)
-    { }
-
-    //! Clear this bus subscriber list, locking the operation.
-    ~EventBus();
-
-    //! @brief Return current dispatching depth.
-    //! Dispatching depth represents how deep we are in the EventBus::fire
-    //! recursion, which happen whenever an event handler fire another
-    //! event on the same bus.
-    int getCurrentDepth() const { return m_firingDepth; }
-
-    //! @brief Subscribe given handler for events of given type.
-    //! If subscriber list already contains given @a handler it does nothing
-    //! but can be used to obtain a new copy of the subscription Account.
-    //! @param [in] handler  event handler instance of the subscriber
-    //! @tparam EventClass Type of the Event to subscribe for.
-    //! @return Association to subscriber list, keep a copy of the object to
-    //! obtain a faster unsubscribe.
-    template < class EventClass >
-    Account subscribe(AEventHandler< EventClass >& handler);
-
-    //! @brief Remove given @a handler from subscribers list (if present).
-    //! @param [in] handler     pointer to handler to remove (if NULL does
-    //!                         nothing.)
-    //! @return True if unsubscribed successfully, false otherwise.
-    bool unsubscribe(IBusHandler* handler);
-
-    //! @brief Sends given event to all subscribed handlers.
-    void fire(const Event& event);
-
-  protected: /*types and data*/
+protected: /*types and data*/
+  
+  typedef std::unordered_map< int, std::shared_ptr< List > > Registry;
     
-    typedef std::map< int, std::shared_ptr< List > > Registry;
-      
 
-    std::recursive_mutex m_mutex;    //!< mutex semaphore
+  std::recursive_mutex m_mutex;    //!< mutex semaphore
 
-    Registry m_handlers;             //!< subscribers map
+  Registry m_handlers;             //!< subscribers map
 
-    int m_firingDepth;               //!< current firing depth
-  };
-
-  // there will be a copy of this function for EACH Event type in your project
-  // but code memory is not a problem, is it?
-  template < class EventClass >
-  EventBus::Account EventBus::subscribe(AEventHandler< EventClass >& handler)
-  {
-      std::unique_lock<std::recursive_mutex> lock(m_mutex);
-      Registry::iterator it = m_handlers.find(EventClass::TYPE);
-    
-      std::shared_ptr<List> subscribers;
-      if (it == m_handlers.end()) // null pointer on insertion
-      {
-          subscribers.reset(new List());
-          m_handlers.insert(std::make_pair(EventClass::TYPE, subscribers));
-      }
-      else
-        subscribers = it->second;
-
-//      if (!subscribers->contains(&handler))
-          subscribers->add(&handler);
-
-      return Account(subscribers, &handler);
-  }
+  int m_firingDepth = 0;           //!< current firing depth
+};
 
 
-}
+} // end of namespace
 
 #endif // DYNAMIC_EVENTBUS_H
