@@ -77,10 +77,10 @@
 		52C92DCB18D4D250005D2ACC /* main.cpp */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; tabWidth = 2; };
 		52C92DCD18D4D250005D2ACC /* testexe.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = testexe.1; sourceTree = "<group>"; };
 		52D261C11D68BC1A00870E30 /* EventBusUnitTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EventBusUnitTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		52D261C31D68BC1A00870E30 /* EventBusUnitTest.mm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; path = EventBusUnitTest.mm; sourceTree = "<group>"; };
+		52D261C31D68BC1A00870E30 /* EventBusUnitTest.mm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; indentWidth = 4; path = EventBusUnitTest.mm; sourceTree = "<group>"; tabWidth = 4; };
 		52D261C51D68BC1A00870E30 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		52D261D21D68CB9900870E30 /* BasicFunctionalTest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BasicFunctionalTest.h; sourceTree = "<group>"; };
-		52D261D31D69965D00870E30 /* BasicFunctionalTest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BasicFunctionalTest.cpp; sourceTree = "<group>"; };
+		52D261D21D68CB9900870E30 /* BasicFunctionalTest.h */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.c.h; path = BasicFunctionalTest.h; sourceTree = "<group>"; tabWidth = 2; };
+		52D261D31D69965D00870E30 /* BasicFunctionalTest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.cpp.cpp; path = BasicFunctionalTest.cpp; sourceTree = "<group>"; tabWidth = 2; };
 		52D261D51D6B58E700870E30 /* EventBase.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.h; path = EventBase.h; sourceTree = "<group>"; tabWidth = 2; };
 /* End PBXFileReference section */
 

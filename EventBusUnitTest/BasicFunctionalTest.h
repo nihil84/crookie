@@ -15,14 +15,20 @@ namespace crookie { class EventBus; }
 class BasicFunctionalTest
 {
 public:
-    
-    BasicFunctionalTest();
-    
-    bool testBasicFunctionality();
-    
+  
+  BasicFunctionalTest();
+  
+  bool testBasicFunctionality();
+  
+  bool testMultipleDelivery();
+  
+  bool testTwoEventsInARow();
+  
+  bool testBusSubscriptions();
+  
 private:
-    
-    crookie::EventBus* m_bus;
+  
+  crookie::EventBus* m_bus;
 };
 
 

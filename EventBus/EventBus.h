@@ -39,9 +39,6 @@ public:
   
   //! Clear this bus subscriber list, locking the operation.
   ~EventBus();
-  
-  EventBus(const EventBus&) = delete;
-  EventBus& operator =(const EventBus&) = delete;
 
   //! @brief Return current dispatching depth.
   //! Dispatching depth represents how deep we are in the EventBus::fire
@@ -57,13 +54,20 @@ public:
   void subscribe(int type, IEventHandler* handler);
   
   //! @brief Remove given @p handler from subscribers list (if present).
+  //! @param [in] type      event type (integer returned by Event::type());
   //! @param [in] handler     pointer to handler to remove (if nullptr does
   //!                         nothing.)
   //! @return True if unsubscribed successfully, false otherwise.
-  bool unsubscribe(IEventHandler* handler);
+  bool unsubscribe(int type, IEventHandler* handler);
 
   //! @brief Sends given event to all subscribed handlers.
   void dispatch(const Event& event);
+  
+  template <typename EventClass, typename ...Args>
+  void dispatch(Args&&... params)
+  {
+    dispatch(Event(new EventClass(std::forward<Args>(params)...)));
+  }
 
 protected: /*types and data*/
   
@@ -75,6 +79,11 @@ protected: /*types and data*/
   Registry m_handlers;             //!< subscribers map
 
   int m_firingDepth = 0;           //!< current firing depth
+  
+private:
+  
+  EventBus(const EventBus&) = delete;
+  EventBus& operator =(const EventBus&) = delete;
 };
 
 

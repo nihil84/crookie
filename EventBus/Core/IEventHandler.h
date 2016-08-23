@@ -14,28 +14,20 @@ public:
 
   typedef EventBus::Event Event;
 
-  IEventHandler(EventBus& bus)
-    : m_owner(&bus)
-  { }
+  IEventHandler() { }
 
-  virtual ~IEventHandler() { }
-
-  virtual int type() const = 0;
+  virtual ~IEventHandler() noexcept { }
 
   //! @brief Handle given event.
   //! This base implementation simply call dispatch on the event.
-  //! @see DBus::ActiveObject
+  //! @see crookie::ActiveObject
   virtual void handle(const Event& event)
   {
       event->dispatch(*this);
   }
   
   //! Called by the owner EventBus upon deletion
-  virtual void dismiss() { m_owner = nullptr; }
-  
-protected:
-  
-  EventBus* m_owner;
+  virtual void dismiss() = 0;
 };
 
   

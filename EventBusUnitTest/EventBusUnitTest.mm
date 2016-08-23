@@ -28,11 +28,6 @@
     [super tearDown];
 }
 
-- (void)testExample {
-    // This is an example of a functional test case.
-    // Use XCTAssert and related functions to verify your tests produce the correct results.
-}
-
 - (void)testBasicFunctionality {
     XCTAssert(test.testBasicFunctionality(), "basic functionality broken");
     
@@ -40,5 +35,21 @@
         test.testBasicFunctionality();
     }];
 }
+
+- (void)testMultipleDelivery {
+    XCTAssert(test.testMultipleDelivery(), "unable to deliver same event to "
+              "multiple instances of the same handler");
+}
+
+- (void)testTowEventsInARow {
+    XCTAssert(test.testTwoEventsInARow(), "unable to deliver two events to "
+              "the same handler");
+}
+
+- (void)testBusSubscriptions {
+    XCTAssert(test.testBusSubscriptions(), "bus switching of the handler does"
+              "not work");
+}
+
 
 @end

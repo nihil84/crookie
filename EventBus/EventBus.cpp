@@ -34,13 +34,38 @@ EventBus::~EventBus()
 }
 
 //------------------------------------------------------------------------------
-bool EventBus::unsubscribe(IEventHandler* handler)
+void EventBus::subscribe(int type, IEventHandler* handler)
+{
+  std::unique_lock<std::recursive_mutex> lock(m_mutex);
+  
+  if (m_firingDepth > 0)
+  {
+    throw std::logic_error("new subscriptions during event dispatching are "
+                           "not supported (yet)");
+  }
+  
+  Registry::iterator it = m_handlers.find(type);
+  
+  std::shared_ptr<List> subscribers;
+  if (it == m_handlers.end()) // null pointer on insertion
+  {
+    subscribers.reset(new List());
+    m_handlers.insert(std::make_pair(type, subscribers));
+  }
+  else
+    subscribers = it->second;
+  
+  subscribers->add(handler);
+}
+
+//------------------------------------------------------------------------------
+bool EventBus::unsubscribe(int type, IEventHandler* handler)
 {
   if (handler == nullptr)
       return false;
 
   std::unique_lock<std::recursive_mutex> lock(m_mutex);
-  Registry::iterator it = m_handlers.find(handler->type());
+  Registry::iterator it = m_handlers.find(type);
   if (it == m_handlers.end()) // no registered handlers for given type
       return false;
 
@@ -88,30 +113,5 @@ void EventBus::dispatch(const Event& event)
 
   if (!bucket.empty())
       throw bucket;
-}
-
-//- protected ------------------------------------------------------------------
-void EventBus::subscribe(int type, IEventHandler* handler)
-{
-  std::unique_lock<std::recursive_mutex> lock(m_mutex);
-  
-  if (m_firingDepth > 0)
-  {
-    throw std::logic_error("new subscriptions during event dispatching are "
-                           "not supported (yet)");
-  }
-
-  Registry::iterator it = m_handlers.find(type);
-  
-  std::shared_ptr<List> subscribers;
-  if (it == m_handlers.end()) // null pointer on insertion
-  {
-    subscribers.reset(new List());
-    m_handlers.insert(std::make_pair(type, subscribers));
-  }
-  else
-    subscribers = it->second;
-  
-  subscribers->add(handler);
 }
 
