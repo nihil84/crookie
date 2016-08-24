@@ -1,7 +1,7 @@
 #ifndef DYNAMIC_EVENTBUS_H
 #define DYNAMIC_EVENTBUS_H
 
-#include "Core/IEvent.h"
+#include "Core/IEventHandler.h"
 #include "Core/BucketException.h"
 #include "Core/MonitoredCollection.h"
 
@@ -16,19 +16,13 @@ namespace crookie {
 /**
  * @brief Message bus business core.
  *
- * You should have not to bother with any of its methods except for fire(),
+ * You should have not to bother with any of its methods except for dispatch(),
  * which allow you to send events to all the handlers of your event subscribed
- * to your bus instance.
- *
- * @warning EventBus instance HAS TO BE fully initialized BEFORE any Handler,
- * thus you cannot instance it as a member of Handler classes.
+ * to this bus instance.
  */
 class EventBus
 {
 public:
-
-  //! @brief Convenient typename for smart pointers to Event instances.
-  typedef std::shared_ptr<IEvent> Event;
 
   //! @brief Type of subscribers list
   typedef MonitoredCollection< IEventHandler* > List;

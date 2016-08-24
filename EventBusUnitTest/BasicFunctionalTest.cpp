@@ -6,7 +6,6 @@
 //  Copyright © 2016 Paolo Bernini. All rights reserved.
 //
 
-
 #include "BasicFunctionalTest.h"
 
 #include <AEventHandler.h>
@@ -102,7 +101,7 @@ bool BasicFunctionalTest::testBasicFunctionality()
 {
   TestEventHandler handler(*m_bus);
   
-  m_bus->dispatch(EventBus::Event(new TestEvent("## testBasicFunctionality ##")));
+  m_bus->dispatch(Event(new TestEvent("## testBasicFunctionality ##")));
   
   return handler.gotit();
 }
@@ -126,7 +125,7 @@ bool BasicFunctionalTest::testTwoEventsInARow()
 {
   TestEventHandler handler(*m_bus);
 
-  m_bus->dispatch(EventBus::Event(new TestEvent("## testTwoEventsInARow ##")));
+  m_bus->dispatch(Event(new TestEvent("## testTwoEventsInARow ##")));
   bool firstok = handler.gotit() && !handler.another();
 
   m_bus->dispatch<AnotherEvent>(1, 5.5);

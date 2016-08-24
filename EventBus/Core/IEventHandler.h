@@ -1,18 +1,19 @@
 #ifndef IEVENTHANDLER_H
 #define IEVENTHANDLER_H
 
-#include "../EventBus.h"
-
+#include "IEvent.h"
+#include <memory>
 
 namespace crookie {
   
+typedef std::shared_ptr<IEvent> Event;
+
+
   
 //! @brief EventBus handler base interface
 class IEventHandler
 {
 public:
-
-  typedef EventBus::Event Event;
 
   IEventHandler() { }
 
@@ -29,6 +30,8 @@ public:
   //! Called by the owner EventBus upon deletion
   virtual void dismiss() = 0;
 };
+
+  
 
   
 }

@@ -38,10 +38,10 @@ public:
   }
 };
 
-
 template <class EventClass>
 const int EventBase<EventClass>::TYPE = IEvent::getTypeId();
 
+  
 } // end of namespace
 
 #endif /* EVENTBASE_H */

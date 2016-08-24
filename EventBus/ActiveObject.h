@@ -1,7 +1,7 @@
 #ifndef DYNAMIC_ACTIVEOBJECT_H
 #define DYNAMIC_ACTIVEOBJECT_H
 
-#include "Core/IEventHandler.h"
+#include "AEventHandler.h"
 
 #include <list>
 #include <mutex>
@@ -10,16 +10,18 @@
 namespace crookie {
 
 
-template <class ...EventClasses>
-class ActiveObject : public IEventHandler
+template <class... EventTypes>
+class ActiveObject : public AEventHandler<EventTypes>...
 {
 public:
 
-  typedef typename EventBus::Event Event;
+  ActiveObject() { }
+  
+  explicit ActiveObject(EventBus& bus)
+    : AEventHandler<EventTypes>(bus)...
+  { }
 
-  ActiveObject(EventBus& bus) { }
-
-  virtual void handle(Event event) override
+  virtual void handle(const Event& event) override
   {
     std::unique_lock<std::mutex> lock(mutex_);
     queue_.push_back(event);
@@ -27,29 +29,26 @@ public:
 
 protected:
 
-  virtual void dispatch();
-
+  virtual void dispatch()
+  {
+    std::unique_lock<std::mutex> lock(mutex_);
+    
+    while (queue_.size() > 0)
+    {
+      Event event = queue_.front();
+      queue_.pop_front();
+      
+      // any exception thrown by the handler will break the message
+      // dispatching but you can resume it later.
+      event->dispatch(*this);
+    }
+  }
   
 private:
 
   std::mutex mutex_;
   std::list< Event > queue_;
 };
-
-void ActiveObject::dispatch()
-{
-  std::unique_lock<std::mutex> lock(mutex_);
-
-  while (queue_.size() > 0)
-  {
-    Event event = queue_.front();
-    queue_.pop_front();
-
-    // any exception thrown by the handler will break the message
-    // dispatching but you can resume it later.
-    event->dispatch(*this);
-  }
-}
 
 
 }

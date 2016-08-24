@@ -9,11 +9,13 @@
 #import <XCTest/XCTest.h>
 
 #include "BasicFunctionalTest.h"
+#include "ActiveObjectsTest.h"
 
 
 @interface EventBusUnitTest : XCTestCase
 {
-    BasicFunctionalTest test;
+    BasicFunctionalTest basicTest;
+    ActiveObjectsTest aobjTest;
 }
 
 @end
@@ -29,26 +31,31 @@
 }
 
 - (void)testBasicFunctionality {
-    XCTAssert(test.testBasicFunctionality(), "basic functionality broken");
+    XCTAssert(basicTest.testBasicFunctionality(), "basic functionality broken");
     
     [self measureBlock:^{
-        test.testBasicFunctionality();
+        basicTest.testBasicFunctionality();
     }];
 }
 
 - (void)testMultipleDelivery {
-    XCTAssert(test.testMultipleDelivery(), "unable to deliver same event to "
-              "multiple instances of the same handler");
+    XCTAssert(basicTest.testMultipleDelivery(), "unable to deliver same event "
+              "to multiple instances of the same handler");
 }
 
 - (void)testTowEventsInARow {
-    XCTAssert(test.testTwoEventsInARow(), "unable to deliver two events to "
-              "the same handler");
+    XCTAssert(basicTest.testTwoEventsInARow(), "unable to deliver two events "
+              "to the same handler");
 }
 
 - (void)testBusSubscriptions {
-    XCTAssert(test.testBusSubscriptions(), "bus switching of the handler does"
-              "not work");
+    XCTAssert(basicTest.testBusSubscriptions(), "bus switching of the handler does "
+              "does not work");
+}
+
+- (void)testActiveObjectThreadless {
+    XCTAssert(aobjTest.testBasicFunctionality(), "ActiveObjects does not work");
+    
 }
 
 

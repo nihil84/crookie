@@ -24,6 +24,7 @@
 		52D261C61D68BC1A00870E30 /* libcrookie.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52C92DBC18D4C68A005D2ACC /* libcrookie.a */; };
 		52D261D41D69965D00870E30 /* BasicFunctionalTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 52D261D31D69965D00870E30 /* BasicFunctionalTest.cpp */; };
 		52D261D61D6B58E700870E30 /* EventBase.h in Headers */ = {isa = PBXBuildFile; fileRef = 52D261D51D6B58E700870E30 /* EventBase.h */; };
+		52D261DA1D6C8EBA00870E30 /* ActiveObjectsTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 52D261D81D6C8EBA00870E30 /* ActiveObjectsTest.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +83,8 @@
 		52D261D21D68CB9900870E30 /* BasicFunctionalTest.h */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.c.h; path = BasicFunctionalTest.h; sourceTree = "<group>"; tabWidth = 2; };
 		52D261D31D69965D00870E30 /* BasicFunctionalTest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.cpp.cpp; path = BasicFunctionalTest.cpp; sourceTree = "<group>"; tabWidth = 2; };
 		52D261D51D6B58E700870E30 /* EventBase.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.h; path = EventBase.h; sourceTree = "<group>"; tabWidth = 2; };
+		52D261D81D6C8EBA00870E30 /* ActiveObjectsTest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ActiveObjectsTest.cpp; sourceTree = "<group>"; };
+		52D261D91D6C8EBA00870E30 /* ActiveObjectsTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActiveObjectsTest.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,6 +196,8 @@
 				52D261C51D68BC1A00870E30 /* Info.plist */,
 				52D261D21D68CB9900870E30 /* BasicFunctionalTest.h */,
 				52D261D31D69965D00870E30 /* BasicFunctionalTest.cpp */,
+				52D261D91D6C8EBA00870E30 /* ActiveObjectsTest.h */,
+				52D261D81D6C8EBA00870E30 /* ActiveObjectsTest.cpp */,
 			);
 			path = EventBusUnitTest;
 			sourceTree = "<group>";
@@ -339,6 +344,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				52D261C41D68BC1A00870E30 /* EventBusUnitTest.mm in Sources */,
+				52D261DA1D6C8EBA00870E30 /* ActiveObjectsTest.cpp in Sources */,
 				52D261D41D69965D00870E30 /* BasicFunctionalTest.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
