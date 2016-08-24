@@ -28,12 +28,25 @@ public:
   SimpleEvent() {}
 };
 
+class AnEvent : public EventBase<AnEvent>
+{
+public:
+  AnEvent() {}
+};
 
-class ActiveHandler : public ActiveObject<SimpleEvent>
+
+class ActiveHandler : public ActiveObject<SimpleEvent, AnEvent>
 {
 public:
   
-  ActiveHandler(EventBus& bus) : ActiveObject<SimpleEvent>(bus) {}
+  ActiveHandler(EventBus& bus)
+    : ActiveObject<SimpleEvent, AnEvent>(bus)
+  { }
+  
+  void run()
+  {
+    m_thread = std::thread(&ActiveHandler::loop, this);
+  }
   
   void runOnce()
   {
@@ -43,6 +56,11 @@ public:
   void onEvent(const SimpleEvent& evt)
   {
     m_simple = true;
+  }
+  
+  void onEvent(const AnEvent& evt)
+  {
+    
   }
   
   bool receivedSimple() const { return m_simple; }

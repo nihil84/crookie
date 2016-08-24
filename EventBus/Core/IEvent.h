@@ -6,9 +6,7 @@
 
 namespace crookie {
 
-class IEventHandler;
-  
-template <class EventType> class AEventHandler;
+class IEventDispatcher;
   
 
 class IEvent
@@ -23,7 +21,7 @@ public:
 
   //! @brief Routine demanded to call the handler on last instance.
   //! @param handler [in]     handler on whom call onEvent(ActualEventType&)
-  virtual void dispatch(IEventHandler& handler) const = 0;
+  virtual void dispatch(IEventDispatcher& dispatcher) const = 0;
   
 protected:
   

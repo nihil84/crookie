@@ -31,9 +31,9 @@ public:
   
   virtual int type() const { return TYPE; }
   
-  virtual void dispatch(IEventHandler& handler) const
+  virtual void dispatch(IEventDispatcher& handler) const
   {
-    SpecificHandler& specific = static_cast<SpecificHandler&>(handler);
+    SpecificHandler& specific = dynamic_cast<SpecificHandler&>(handler);
     specific.onEvent(static_cast<const EventClass&>(*this));
   }
 };

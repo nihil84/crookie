@@ -39,7 +39,7 @@ protected:
       queue_.pop_front();
       
       // any exception thrown by the handler will break the message
-      // dispatching but you can resume it later.
+      // dispatching but you can eventually resume it later.
       event->dispatch(*this);
     }
   }

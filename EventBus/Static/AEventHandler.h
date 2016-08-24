@@ -9,7 +9,7 @@ namespace crookie {
 namespace sbus {
   
   //! @brief Basic class for event handlers on StaticBus
-  template < unsigned int buscode, class EventType >
+  template < unsigned buscode, class EventType >
   class AEventHandler : public crookie::AEventHandler< EventType >
   {
   public:

@@ -14,11 +14,11 @@
 namespace crookie {
 
   // forward declarations
-  template <unsigned int code> class AEventHandler;
+  template <unsigned code> class AEventHandler;
 
   // code
 
-  template < unsigned int code >
+  template < unsigned code >
   class StaticBus : public EventBus
   {
   public /*types*/:
