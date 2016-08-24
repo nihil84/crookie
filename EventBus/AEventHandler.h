@@ -18,6 +18,7 @@ class AEventHandler : public IEventHandler
 public:
   
   typedef EventType HandledEvent;
+  
 
   AEventHandler() {}
   
@@ -48,7 +49,7 @@ protected:
   //! @param [in] bus   A reference to the bus where to perform the subscription
   //! @return A reference to the bus the handler was subscribed before or
   //! nullptr if none.
-  virtual EventBus* subscribe(EventBus& bus)
+  EventBus* subscribe(EventBus& bus)
   {
     EventBus* oldbus = m_owner;
     if (&bus == oldbus)

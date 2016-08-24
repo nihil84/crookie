@@ -25,6 +25,7 @@
 		52D261D41D69965D00870E30 /* BasicFunctionalTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 52D261D31D69965D00870E30 /* BasicFunctionalTest.cpp */; };
 		52D261D61D6B58E700870E30 /* EventBase.h in Headers */ = {isa = PBXBuildFile; fileRef = 52D261D51D6B58E700870E30 /* EventBase.h */; };
 		52D261DA1D6C8EBA00870E30 /* ActiveObjectsTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 52D261D81D6C8EBA00870E30 /* ActiveObjectsTest.cpp */; };
+		52D261DC1D6DCF1600870E30 /* HandlerFunctor.h in Headers */ = {isa = PBXBuildFile; fileRef = 52D261DB1D6DCF1600870E30 /* HandlerFunctor.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +86,7 @@
 		52D261D51D6B58E700870E30 /* EventBase.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.h; path = EventBase.h; sourceTree = "<group>"; tabWidth = 2; };
 		52D261D81D6C8EBA00870E30 /* ActiveObjectsTest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ActiveObjectsTest.cpp; sourceTree = "<group>"; };
 		52D261D91D6C8EBA00870E30 /* ActiveObjectsTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActiveObjectsTest.h; sourceTree = "<group>"; };
+		52D261DB1D6DCF1600870E30 /* HandlerFunctor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HandlerFunctor.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +134,7 @@
 				5260848318DEF045002071DB /* EventBus.h */,
 				5260848218DEF045002071DB /* EventBus.cpp */,
 				52D261D51D6B58E700870E30 /* EventBase.h */,
+				52D261DB1D6DCF1600870E30 /* HandlerFunctor.h */,
 			);
 			path = EventBus;
 			sourceTree = "<group>";
@@ -216,6 +219,7 @@
 				5260847418DEEFBC002071DB /* IEventHandler.h in Headers */,
 				5260847E18DEF036002071DB /* AEventHandler.h in Headers */,
 				5260847D18DEF036002071DB /* ActiveObject.h in Headers */,
+				52D261DC1D6DCF1600870E30 /* HandlerFunctor.h in Headers */,
 				5260848518DEF045002071DB /* AEventHandler.h in Headers */,
 				5260848718DEF045002071DB /* EventBus.h in Headers */,
 				52D261D61D6B58E700870E30 /* EventBase.h in Headers */,

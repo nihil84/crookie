@@ -14,6 +14,8 @@
 
 #include <iostream>
 #include <string>
+#include <thread>
+#include <chrono>
 #include <cassert>
 
 using namespace std;
@@ -45,9 +47,23 @@ public:
   
   bool receivedSimple() const { return m_simple; }
   
+  void stop()
+  {
+    m_done = true;
+    m_thread.join();
+  }
+  
 private:
   
+  std::thread m_thread;
   bool m_simple = false;
+  bool m_done = false;
+  
+  void loop()
+  {
+    while (!m_done)
+      dispatch();
+  }
 };
 
 
@@ -69,4 +85,25 @@ bool ActiveObjectsTest::testBasicFunctionality()
   handler.runOnce();
   
   return firstOk && handler.receivedSimple();
+}
+
+//------------------------------------------------------------------------------
+bool ActiveObjectsTest::testConcurrentDelivery()
+{
+  ActiveHandler handler(*m_bus);
+  
+  m_bus->dispatch<SimpleEvent>();
+  
+  bool firstOk = !handler.receivedSimple();
+  
+  handler.run();
+  
+  std::this_thread::sleep_for(std::chrono::seconds(1));
+  
+  while (!handler.receivedSimple())
+    ;
+  
+  handler.stop();
+  
+  return (firstOk && handler.receivedSimple());
 }

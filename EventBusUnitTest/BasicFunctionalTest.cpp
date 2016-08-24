@@ -11,6 +11,7 @@
 #include <AEventHandler.h>
 #include <EventBus.h>
 #include <EventBase.h>
+#include <HandlerFunctor.h>
 
 #include <iostream>
 #include <string>
@@ -75,7 +76,7 @@ public:
     m_another = false;
   }
   
-  virtual EventBus* subscribe(EventBus& bus) override
+  EventBus* subscribe(EventBus& bus)
   {
     EventBus* oldbus1 = AEventHandler<TestEvent>::subscribe(bus);
     EventBus* oldbus2 = AEventHandler<AnotherEvent>::subscribe(bus);
@@ -89,7 +90,28 @@ private:
   bool m_another = false;
 };
 
+bool aGoodOldGlobal = false;
+void aStaticFunctionHandler(const AnotherEvent& evt)
+{
+  aGoodOldGlobal = true;
+}
 
+class VerySimpleClass
+{
+public:
+  
+  HandlerFunctor<AnotherEvent> handler;
+  bool good = false;
+
+  void eventHandler(const AnotherEvent& evt)
+  {
+    good = true;
+  }
+  
+  explicit VerySimpleClass(EventBus& bus)
+    : handler(bus, this, &VerySimpleClass::eventHandler)
+  { }
+};
 
 //------------------------------------------------------------------------------
 BasicFunctionalTest::BasicFunctionalTest()
@@ -132,6 +154,7 @@ bool BasicFunctionalTest::testTwoEventsInARow()
   return (firstok && handler.gotit() && handler.another());
 }
 
+//------------------------------------------------------------------------------
 bool BasicFunctionalTest::testBusSubscriptions()
 {
   EventBus secondBus;
@@ -152,6 +175,20 @@ bool BasicFunctionalTest::testBusSubscriptions()
   bool secondOk = !handler.gotit() && handler.another();
   
   return (firstOk && secondOk);
+}
+
+//------------------------------------------------------------------------------
+bool BasicFunctionalTest::testHandlerFunctors()
+{
+  TestEventHandler handler(*m_bus);
+  VerySimpleClass object(*m_bus);
+  HandlerFunctor<AnotherEvent> functor;
+  
+  functor = HandlerFunctor<AnotherEvent>(*m_bus, aStaticFunctionHandler);
+  
+  m_bus->dispatch<AnotherEvent>(4, 22.8);
+  
+  return (handler.another() && object.good && aGoodOldGlobal);
 }
 
 

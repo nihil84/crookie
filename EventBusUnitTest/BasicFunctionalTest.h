@@ -26,6 +26,8 @@ public:
   
   bool testBusSubscriptions();
   
+  bool testHandlerFunctors();
+  
 private:
   
   crookie::EventBus* m_bus;

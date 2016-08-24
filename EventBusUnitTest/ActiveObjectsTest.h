@@ -21,11 +21,7 @@ public:
   
   bool testBasicFunctionality();
   
-  bool testMultipleDelivery();
-  
-  bool testTwoEventsInARow();
-  
-  bool testBusSubscriptions();
+  bool testConcurrentDelivery();
   
 private:
   

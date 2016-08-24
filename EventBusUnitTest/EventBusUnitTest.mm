@@ -49,13 +49,23 @@
 }
 
 - (void)testBusSubscriptions {
-    XCTAssert(basicTest.testBusSubscriptions(), "bus switching of the handler does "
+    XCTAssert(basicTest.testBusSubscriptions(), "bus switching of the handler "
               "does not work");
 }
 
+- (void)testHandlerFunctors {
+    XCTAssert(basicTest.testHandlerFunctors(), "handler functors do not work "
+              "as designed");
+}
+
 - (void)testActiveObjectThreadless {
-    XCTAssert(aobjTest.testBasicFunctionality(), "ActiveObjects does not work");
+    XCTAssert(aobjTest.testBasicFunctionality(), "ActiveObject does not work");
     
+}
+
+- (void)testActiveObject {
+    XCTAssert(aobjTest.testConcurrentDelivery(), "ActiveObject is not capable "
+              "of handling simple concurrent events");
 }
 
 
