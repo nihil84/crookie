@@ -19,3 +19,11 @@ add_library(crookie
 set_property(TARGET crookie PROPERTY CXX_STANDARD 11)
 set_property(TARGET crookie PROPERTY CXX_STANDART_REQUIRED ON)
 
+
+# test
+
+option (BUILD_TESTS "build test modules (use boost test framework)" ON)
+
+if (BUILD_TESTS)
+  add_subdirectory(test)
+endif (BUILD_TESTS)
