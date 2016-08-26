@@ -3,6 +3,8 @@ enable_testing ()
 
 project (UnitTests)
 
+find_package (Threads)
+
 file (GLOB TEST_SRCS RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}/ *.cpp)
 
 foreach (testSrc ${TEST_SRCS})
@@ -16,6 +18,7 @@ foreach (testSrc ${TEST_SRCS})
   
   include_directories ("${crookie_SOURCE_DIR}")
   target_link_libraries (${testName} crookie)
+  target_link_libraries (${testName} ${CMAKE_THREAD_LIBS_INIT})
   
   set_target_properties (${testName} PROPERTIES 
       RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/bin

@@ -1,16 +1,9 @@
-//
-//  ActiveObjectsTest.cpp
-//  crookie
-//
-//  Created by Paolo Bernini on 23/08/16.
-//  Copyright © 2016 Paolo Bernini. All rights reserved.
-//
+#define BOOST_TEST_MODULE "LockedPtr test"
+#include "boost-test/unit_test.hpp"
 
-#include "ActiveObjectsTest.h"
-
-#include <ActiveObject.h>
-#include <EventBus.h>
-#include <EventBase.h>
+#include <EventBus/ActiveObject.h>
+#include <EventBus/EventBus.h>
+#include <EventBus/EventBase.h>
 
 #include <iostream>
 #include <string>
@@ -20,6 +13,16 @@
 
 using namespace std;
 using namespace crookie;
+
+
+struct SuiteFixture 
+{
+  SuiteFixture() { m_bus = new EventBus(); }
+  ~SuiteFixture() { delete m_bus; }
+  
+  EventBus* m_bus;
+};
+
 
 
 class SimpleEvent : public EventBase<SimpleEvent>
@@ -86,33 +89,30 @@ private:
 
 
 
-//------------------------------------------------------------------------------
-ActiveObjectsTest::ActiveObjectsTest()
-: m_bus(new EventBus())
-{ }
+BOOST_FIXTURE_TEST_SUITE( event_bus, SuiteFixture )
 
 //------------------------------------------------------------------------------
-bool ActiveObjectsTest::testBasicFunctionality()
+BOOST_AUTO_TEST_CASE( basic_functional_test )
 {
   ActiveHandler handler(*m_bus);
   
   m_bus->dispatch<SimpleEvent>();
   
-  bool firstOk = !handler.receivedSimple();
+  BOOST_CHECK( !handler.receivedSimple() );
   
   handler.runOnce();
   
-  return firstOk && handler.receivedSimple();
+  BOOST_CHECK( handler.receivedSimple() );
 }
 
 //------------------------------------------------------------------------------
-bool ActiveObjectsTest::testConcurrentDelivery()
+BOOST_AUTO_TEST_CASE( test_concurrent_delivery )
 {
   ActiveHandler handler(*m_bus);
   
   m_bus->dispatch<SimpleEvent>();
   
-  bool firstOk = !handler.receivedSimple();
+  BOOST_CHECK( !handler.receivedSimple() );
   
   handler.run();
   
@@ -123,5 +123,9 @@ bool ActiveObjectsTest::testConcurrentDelivery()
   
   handler.stop();
   
-  return (firstOk && handler.receivedSimple());
+  BOOST_CHECK( handler.receivedSimple() );
 }
+
+
+BOOST_AUTO_TEST_SUITE_END()
+  
