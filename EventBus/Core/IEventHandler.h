@@ -5,6 +5,8 @@
 #include <memory>
 
 namespace crookie {
+
+class EventBus;
   
 typedef std::shared_ptr<IEvent> Event;
 
@@ -30,8 +32,22 @@ class IEventHandler : public virtual IEventDispatcher
 {
 public:
 
+  IEventHandler() { }
+  
+  explicit IEventHandler(EventBus& bus)
+    : m_owner(&bus)
+  { }
+
   //! Called by the owner EventBus upon deletion
-  virtual void dismiss() = 0;
+  virtual void dismiss() 
+  { 
+    m_owner = nullptr; 
+  }
+  
+protected:   
+
+  //! Reference to the bus where it has subscribed for HandledEvents
+  EventBus* m_owner = nullptr;
 };
 
   

@@ -4,6 +4,8 @@
 #include "Core/IEventHandler.h"
 #include "EventBus.h"
 
+#include <cassert>
+
 
 namespace crookie {
 
@@ -25,7 +27,7 @@ public:
   //! @brief Subscribes this handler to given bus.
   //! @param [in] bus   Bus on which subscribe for \a EventType events.
   explicit AEventHandler(EventBus& bus)
-      : m_owner(&bus)
+      : IEventHandler(bus)
   { bus.subscribe(HandledEvent::TYPE, this); }
 
   //! @brief Unsubscribe from EventBus.
@@ -34,15 +36,10 @@ public:
   //! @brief Return the type of handled events
   virtual int type() const { return HandledEvent::TYPE; }
 
-  virtual void dismiss() { m_owner = nullptr; }
-
   //! @brief Handler routine.
   virtual void onEvent(const HandledEvent& event) = 0;
 
 protected:
-  
-  //! Reference to the bus where it has subscribed for HandledEvents
-  EventBus* m_owner = nullptr;
   
   //! @brief Subscribe this handler on given bus.
   //! If it was subscribed on another bus, the old subscription is removed.
@@ -56,8 +53,12 @@ protected:
       return oldbus; // nothing to change
     
     if (oldbus != nullptr)
-      oldbus->unsubscribe(HandledEvent::TYPE, this);
-    bus.subscribe(HandledEvent::TYPE, this);
+    {
+      bool found = oldbus->unsubscribe(HandledEvent::TYPE, this);
+      assert(found);
+    }
+    m_owner = &bus;
+    m_owner->subscribe(HandledEvent::TYPE, this);
     return oldbus;
   }
   
