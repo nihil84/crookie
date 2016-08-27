@@ -1,5 +1,5 @@
 #define BOOST_TEST_MODULE "LockedPtr test"
-#include "boost-test/unit_test.hpp"
+#include <boost/test/unit_test.hpp>
 
 #include <MultiThreading/SimpleLock.h>
 #include <MultiThreading/LockedPtr.h>

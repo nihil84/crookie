@@ -1,5 +1,5 @@
 #define BOOST_TEST_MODULE "EventBus test"
-#include "boost-test/unit_test.hpp"
+#include <boost/test/unit_test.hpp>
 
 #include <EventBus/AEventHandler.h>
 #include <EventBus/EventBus.h>
@@ -36,9 +36,9 @@ public:
 
 class AnotherEvent : public EventBase<AnotherEvent>
 {
+public:
   int m_a;
   double m_b;
-public:
   
   AnotherEvent(int a, double b)
     : m_a(a), m_b(b)

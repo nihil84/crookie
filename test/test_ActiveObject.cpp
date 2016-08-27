@@ -1,5 +1,5 @@
 #define BOOST_TEST_MODULE "LockedPtr test"
-#include "boost-test/unit_test.hpp"
+#include <boost/test/unit_test.hpp>
 
 #include <EventBus/ActiveObject.h>
 #include <EventBus/EventBus.h>
@@ -89,7 +89,7 @@ private:
 
 
 
-BOOST_FIXTURE_TEST_SUITE( event_bus, SuiteFixture )
+BOOST_FIXTURE_TEST_SUITE( active_object, SuiteFixture )
 
 //------------------------------------------------------------------------------
 BOOST_AUTO_TEST_CASE( basic_functional_test )
@@ -125,7 +125,6 @@ BOOST_AUTO_TEST_CASE( test_concurrent_delivery )
   
   BOOST_CHECK( handler.receivedSimple() );
 }
-
 
 BOOST_AUTO_TEST_SUITE_END()
   
