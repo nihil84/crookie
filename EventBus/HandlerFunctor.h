@@ -106,7 +106,7 @@ public:
   {
     if (!m_fun)
     {
-      assert(AEventHandler<HandledEvent>::m_owner == nullptr);
+      assert(AEventHandler<HandledEvent>::owner() == nullptr);
       return true; // no subcriptions active
     }
     
@@ -142,7 +142,7 @@ HandlerFunctor<EventType>::HandlerFunctor(HandlerFunctor<EventType>&& rv)
   }
 }
 
-  //- move operator ----------------------------------------------------------//
+//- move operator ------------------------------------------------------------//
 template <class EventType>
 HandlerFunctor<EventType>& HandlerFunctor<EventType>::operator =(
       HandlerFunctor<EventType>&& rv)
@@ -154,7 +154,8 @@ HandlerFunctor<EventType>& HandlerFunctor<EventType>::operator =(
   
   if (rv)
   {
-    this->subscribe(*rv.m_owner);
+    assert(rv.owner() != nullptr);
+    this->subscribe(*rv.owner());
     
     rv.unsubscribe();
     rv.m_fun = HandlerFunction(); // reset rvalue functor

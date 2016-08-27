@@ -1,8 +1,8 @@
 #define BOOST_TEST_MODULE "EventBus test"
 #include <boost/test/unit_test.hpp>
 
+#include <EventBus/Core/EventBus.h>
 #include <EventBus/AEventHandler.h>
-#include <EventBus/EventBus.h>
 #include <EventBus/EventBase.h>
 #include <EventBus/HandlerFunctor.h>
 

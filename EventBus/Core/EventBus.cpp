@@ -1,6 +1,5 @@
 #include "EventBus.h"
 
-#include "AEventHandler.h"
 #include <stdexcept>
 
 using namespace crookie;
@@ -103,7 +102,7 @@ void EventBus::dispatch(const Event& event)
   catch (...)
   {
     bucket.add(*it, std::logic_error(
-        "StaticBus caught an exception of an unknown type "
+        "EventBus caught an exception of an unknown type "
         "(you should derive all your exceptions from std::exception,"
         " throw them by value and catch by reference)"
     ));

@@ -18,8 +18,8 @@ set( HEADERS
   EventBus/ActiveObject.h
   EventBus/AEventHandler.h
   EventBus/EventBase.h
-  EventBus/EventBus.h
   EventBus/HandlerFunctor.h
+  EventBus/Core/EventBus.h
   EventBus/Core/BucketException.h
   EventBus/Core/IEvent.h
   EventBus/Core/IEventHandler.h
@@ -29,8 +29,9 @@ set( HEADERS
   EventBus/Static/StaticBus.h
 )
 
-add_library(crookie 
-	EventBus/EventBus.cpp
+add_library(crookie
+  EventBus/Core/IEventHandler.cpp
+	EventBus/Core/EventBus.cpp
 
   ${HEADERS}
 )

@@ -2,7 +2,7 @@
 #define DYNAMIC_AEVENTHANDLER_HPP
 
 #include "Core/IEventHandler.h"
-#include "EventBus.h"
+#include "Core/EventBus.h"
 
 #include <cassert>
 
@@ -27,8 +27,8 @@ public:
   //! @brief Subscribes this handler to given bus.
   //! @param [in] bus   Bus on which subscribe for \a EventType events.
   explicit AEventHandler(EventBus& bus)
-      : IEventHandler(bus)
-  { bus.subscribe(HandledEvent::TYPE, this); }
+      : IEventHandler(bus, HandledEvent::TYPE)
+  { }
 
   //! @brief Unsubscribe from EventBus.
   ~AEventHandler() noexcept { unsubscribe(); }
@@ -38,36 +38,14 @@ public:
 
   //! @brief Handler routine.
   virtual void onEvent(const HandledEvent& event) = 0;
-
+  
 protected:
   
-  //! @brief Subscribe this handler on given bus.
-  //! If it was subscribed on another bus, the old subscription is removed.
-  //! @param [in] bus   A reference to the bus where to perform the subscription
-  //! @return A reference to the bus the handler was subscribed before or
-  //! nullptr if none.
   EventBus* subscribe(EventBus& bus)
-  {
-    EventBus* oldbus = m_owner;
-    if (&bus == oldbus)
-      return oldbus; // nothing to change
-    
-    if (oldbus != nullptr)
-    {
-      bool found = oldbus->unsubscribe(HandledEvent::TYPE, this);
-      assert(found);
-    }
-    m_owner = &bus;
-    m_owner->subscribe(HandledEvent::TYPE, this);
-    return oldbus;
-  }
-  
-  //! @brief Early unsubscribe from EventBus.
+  { return IEventHandler::subscribe(bus, HandledEvent::TYPE); }
+
   bool unsubscribe()
-  {
-    return (m_owner != nullptr
-            && m_owner->unsubscribe(HandledEvent::TYPE, this));
-  }
+  { return IEventHandler::unsubscribe(HandledEvent::TYPE); }
 };
 
   

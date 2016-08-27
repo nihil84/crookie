@@ -1,8 +1,8 @@
 #define BOOST_TEST_MODULE "LockedPtr test"
 #include <boost/test/unit_test.hpp>
 
+#include <EventBus/Core/EventBus.h>
 #include <EventBus/ActiveObject.h>
-#include <EventBus/EventBus.h>
 #include <EventBus/EventBase.h>
 
 #include <iostream>
