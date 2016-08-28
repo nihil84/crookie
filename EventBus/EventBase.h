@@ -12,6 +12,9 @@
 #include "Core/IEvent.h"
 #include "AEventHandler.h"
 
+#include <cassert>
+#include <type_traits>
+
 namespace crookie {
   
 /**
@@ -19,6 +22,8 @@ namespace crookie {
  *
  * Any other detail of MyEvent class (constructor parameters, public methods,
  * data members, etc...) is up to you.
+ * 
+ * @tparm EventClass Type of the event derived from this template instance.
  */
 template <class EventClass>
 class EventBase : public IEvent

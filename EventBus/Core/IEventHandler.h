@@ -70,8 +70,8 @@ protected:
 private:
 
   //! Reference to the bus where it has subscribed for HandledEvents
+  const int m_type;
   EventBus* m_owner = nullptr;
-  int m_type = IEvent::INVALID_TYPE;
 };
 
 

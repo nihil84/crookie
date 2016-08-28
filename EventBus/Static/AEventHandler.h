@@ -2,7 +2,7 @@
 #define STATIC_AEVENTHANDLER_H
 
 #include "StaticBus.h"
-#include "../Dinamic/AEventHandler.h"
+#include "../AEventHandler.h"
 
 
 namespace crookie {

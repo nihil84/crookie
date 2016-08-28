@@ -15,7 +15,7 @@ using namespace crookie;
 
 //------------------------------------------------------------------------------
 IEventHandler::IEventHandler(EventBus& bus, int type)
-  : m_owner(&bus), m_type(type)
+  : m_type(type), m_owner(&bus)
 {
   bus.subscribe(type, this);
 }

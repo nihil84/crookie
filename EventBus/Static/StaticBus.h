@@ -8,77 +8,54 @@
 #ifndef STATIC_EVENTBUS_H
 #define STATIC_EVENTBUS_H
 
-#include "../Dynamic/EventBus.hpp"
+#include "../Core/EventBus.h"
 
 
 namespace crookie {
-
-  // forward declarations
-  template <unsigned code> class AEventHandler;
-
-  // code
-
-  template < unsigned code >
-  class StaticBus : public EventBus
-  {
-  public /*types*/:
-
-    static const unsigned CODE = code;
-
-    typedef AEventHandler< code > IBusHandler;
-
-
-  public /*interface*/:
-
-    static StaticBus< code >& instance();
-
-    ~StaticBus() { }
-    
-
-  private /*types and data*/:
-
-    static std::mutex creation_;
-
-    static volatile std::unique_ptr< StaticBus< code > > instance_;
-
-    StaticBus() { }
-    
-    StaticBus(const StaticBus&);
-    StaticBus operator =(const StaticBus&);
-  };
-
-
-//- member instances ---------------------------------------------------------//
-
-  template < unsigned int code >
-  std::mutex StaticBus< code >::creation_;
-
-  template < unsigned int code >
-  volatile std::unique_ptr< StaticBus< code > > StaticBus< code >::instance_;
-
-
-//- method definitions -------------------------------------------------------//
-
-  template < unsigned int code >
-  StaticBus< code >& StaticBus< code >::instance()
-  {
-    if (!instance_)
-    {
-      std::unique_lock<std::mutex> lock(creation_);
-      if (!instance_)
-        instance_.reset(new StaticBus< code >());
-    }
-
-    return *instance_;
-  }
-
-//- template instance --------------------------------------------------------//
-
-  enum Id { Main = 0 };
-
-  typedef StaticBus< Main > MainBus;
-
   
+namespace sbus {
+  
+
+// StaticBus EventHandler forward declaration
+template < unsigned buscode, class EventType >
+  class AEventHandler;
+  
+// code
+
+template < unsigned code >
+class StaticBus : public EventBus
+{
+public /*types*/:
+
+  template <class EventType>
+  using Handler = AEventHandler< code, EventType >;
+  
+  static const unsigned CODE = code;
+
+
+public /*interface*/:
+
+  static StaticBus< code >& instance();
+  
+
+private /*types and data*/:
+
+  StaticBus() { }
+  
+  StaticBus(const StaticBus&) = delete;
+  StaticBus operator =(const StaticBus&) = delete;
+};
+
+
+//- method definitions ---------------------------------------------------------
+
+template < unsigned int code >
+StaticBus< code >& StaticBus< code >::instance()
+{
+  static StaticBus<code> _bus;
+  return _bus;
 }
+
+}} // end of namespace
 
 #endif
