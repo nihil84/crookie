@@ -15,13 +15,13 @@ using namespace crookie;
 
 //------------------------------------------------------------------------------
 IEventHandler::IEventHandler(EventBus& bus, int type)
-  : m_owner(&bus)
+  : m_owner(&bus), m_type(type)
 {
   bus.subscribe(type, this);
 }
 
 //- protected ------------------------------------------------------------------
-EventBus* IEventHandler::subscribe(EventBus& bus, int type)
+EventBus* IEventHandler::subscribe(EventBus& bus)
 {
   EventBus* oldbus = m_owner;
   if (&bus == oldbus)
@@ -29,17 +29,17 @@ EventBus* IEventHandler::subscribe(EventBus& bus, int type)
   
   if (oldbus != nullptr)
   {
-    bool found = oldbus->unsubscribe(type, this);
+    bool found = oldbus->unsubscribe(m_type, this);
     assert(found);
   }
   
   m_owner = &bus;
-  m_owner->subscribe(type, this);
+  m_owner->subscribe(m_type, this);
   return oldbus;
 }
 
 //- protected ------------------------------------------------------------------
-bool IEventHandler::unsubscribe(int type)
+bool IEventHandler::unsubscribe()
 {
-  return (m_owner != nullptr && m_owner->unsubscribe(type, this));
+  return (m_owner != nullptr && m_owner->unsubscribe(m_type, this));
 }

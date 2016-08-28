@@ -127,6 +127,22 @@ BOOST_AUTO_TEST_CASE( basic_functional_test )
 }
 
 //------------------------------------------------------------------------------
+BOOST_AUTO_TEST_CASE( check_correctness_on_reversed_destruction_sequence )
+{
+  EventBus* tempBus = new EventBus();
+  TestEventHandler handler(*tempBus);
+  
+  BOOST_CHECK(handler.AEventHandler<TestEvent>::subscribed());
+  
+  tempBus->dispatch(Event(new TestEvent("## testBusDeletionCorrectness ##")));
+  BOOST_CHECK(handler.gotit());
+  
+  delete tempBus;
+  
+  BOOST_CHECK(!handler.AEventHandler<TestEvent>::subscribed());
+}
+
+//------------------------------------------------------------------------------
 BOOST_AUTO_TEST_CASE( test_multiple_delivery )
 {
   TestEventHandler handler1(*g_bus);

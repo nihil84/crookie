@@ -12,6 +12,8 @@ class IEventDispatcher;
 class IEvent
 {
 public:
+  
+  static const int INVALID_TYPE = -1;
 
   //! @brief Destructor
   virtual ~IEvent() { }

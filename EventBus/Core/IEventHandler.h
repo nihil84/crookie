@@ -32,9 +32,13 @@ class IEventHandler : public virtual IEventDispatcher
 {
 public:
 
-  IEventHandler() { }
+  IEventHandler(int type) : m_type(type) { }
   
   explicit IEventHandler(EventBus& bus, int type);
+
+  
+  //! @brief Return the type of handled events
+  virtual int type() const { return m_type; }
 
   //! Called by the owner EventBus upon deletion
   virtual void dismiss() 
@@ -42,21 +46,21 @@ public:
     m_owner = nullptr; 
   }
   
+  bool subscribed() const { return m_owner != nullptr; }
+  
 protected:   
   
   //! @brief Subscribe this handler on given bus.
   //! If it was subscribed on another bus, the old subscription is removed.
   //! @param [in] bus   A reference to the bus where to perform the subscription
-  //! @param [in] type  Type of the event the handler will subscribe
   //! @return A reference to the bus the handler was subscribed before or
   //! nullptr if none.
-  EventBus* subscribe(EventBus& bus, int type);
+  EventBus* subscribe(EventBus& bus);
   
   //! @brief Early unsubscribe from EventBus.
-  //! @param [in] type  Type of the event the handler will unsubscribe
   //! @return True if this handler was subscribed for the specified event, false
   //! otherwise.
-  bool unsubscribe(int type);
+  bool unsubscribe();
   
   //! @brief Allow derived classes full access to the current EventBus instance.
   //! @return A Reference to current EventBus instance or nullptr if not
@@ -66,7 +70,8 @@ protected:
 private:
 
   //! Reference to the bus where it has subscribed for HandledEvents
-  EventBus* m_owner = nullptr;  
+  EventBus* m_owner = nullptr;
+  int m_type = IEvent::INVALID_TYPE;
 };
 
 

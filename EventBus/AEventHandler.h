@@ -22,7 +22,9 @@ public:
   typedef EventType HandledEvent;
   
 
-  AEventHandler() {}
+  AEventHandler()
+    : IEventHandler(HandledEvent::TYPE)
+  { }
   
   //! @brief Subscribes this handler to given bus.
   //! @param [in] bus   Bus on which subscribe for \a EventType events.
@@ -33,19 +35,9 @@ public:
   //! @brief Unsubscribe from EventBus.
   ~AEventHandler() noexcept { unsubscribe(); }
 
-  //! @brief Return the type of handled events
-  virtual int type() const { return HandledEvent::TYPE; }
-
   //! @brief Handler routine.
   virtual void onEvent(const HandledEvent& event) = 0;
   
-protected:
-  
-  EventBus* subscribe(EventBus& bus)
-  { return IEventHandler::subscribe(bus, HandledEvent::TYPE); }
-
-  bool unsubscribe()
-  { return IEventHandler::unsubscribe(HandledEvent::TYPE); }
 };
 
   
