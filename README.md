@@ -22,13 +22,16 @@ The `LockedPtr` template class wants to be a safe and convenient way to return a
 
 `EventBus` is the actual core of the library and it allows to dispatch any type of events or messages to the handlers subscribed to the bus, whitout the need of senders and receivers to know each other.
 
-It makes extensive use of templates to allow a productive use of the bus with very few lines of code, as in the following example:
+It makes extensive use of templates to allow a productive use of the bus with very few lines of code, as in the following fully functional example:
 
 
 ```
 #!c++
 #include <EventBus/Static/AEventHandler.h>
 #include <EventBus/EventBase.h>
+#include <cassert>
+
+using namespace crookie;
 
 enum Id { Main = 0 };
 
@@ -41,17 +44,48 @@ class YourEvent : public EventBase<YourEvent>
 class Handler : public MainBus::Handler<YourEvent>
 {
 public:
-  
-  void onEvent(const TestEvent& evt) { /* event handling */ }
-
+  bool on_event = false;
+  void onEvent(const TestEvent& evt)
+  { 
+    on_event = true;
+    /* event handling */ 
+  }
 };
 
 int main(/*...*/)
 {
   Handler handler;
 
+  MainBus::dispatch<YourEvent>(/*parameters to the constructor, if any*/);
 
-
+  assert(handler.on_event == true);
 }
+
+```
+
+Furthermore you can derive from `crookie::ActiveObject` or `crookie::sbus::ActiveObject` to get all your events enqueued for later handling and/or for thread decoupling as in the example below where the class `ActiveHandler` will handle only in its private thread of execution all TestEvent instances dispatched on the MainBus:
+
+
+```
+#!c++
+#include <EventBus/StaticBus/ActiveObject.h>
+#include <thread>
+
+class ActiveHandler : public MainBus::ActiveObject<TestEvent>
+{
+public: 
+  void onEvent(const TestEvent& evt) { ++m_test; }
+  
+  void run() { m_thread = std::thread(&ActiveHandler::loop, this); }  
+  
+private:
+  std::thread m_thread;
+  
+  void loop()
+  {
+    for(;;)
+      dispatch();
+  }
+};
 
 ```
