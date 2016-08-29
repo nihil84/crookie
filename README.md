@@ -4,7 +4,7 @@ C++11 simple yet powerful building blocks
 
 This is more a private collection of code snippets and little toolsets than a library, but you could find some useful classes for your project.
 
-The library is still in a highly experimental phase of its life, I apologies for all the lacks in documentation and I cannot guarantee that the public interface of any of the classes of the library will not change in the future.
+The library is still in a highly experimental phase of its life: I apology for all the lacks in documentation and I cannot guarantee that the public interface of any of the classes of the library nor even the name of the classes and their header files will not change in the future.
 
 ## Dependencies ##
 
