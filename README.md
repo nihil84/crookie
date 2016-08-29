@@ -80,16 +80,10 @@ class ActiveHandler : public MainBus::ActiveObject<TestEvent>
 public: 
   void onEvent(const TestEvent& evt) { ++m_test; }
   
-  void run() { m_thread = std::thread(&ActiveHandler::loop, this); }  
+  void run() { m_thread = std::thread([]{ for(;;) dispatch(); }); }  
   
 private:
   std::thread m_thread;
-  
-  void loop()
-  {
-    for(;;)
-      dispatch();
-  }
 };
 
 ```
