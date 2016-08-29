@@ -20,7 +20,7 @@ The `LockedPtr` template class wants to be a safe and convenient way to return a
 
 ### EventBus ###
 
-`EventBus` is the actual core of the library and it allows to dispatch any type of events or messages to the handlers subscribed to the bus, whitout the need of senders and receivers to know each other.
+`EventBus` is the real core of the library and it allows to dispatch any type of events or messages to the handlers subscribed to the bus, whitout the need of senders and receivers to know each other.
 
 It makes extensive use of templates to allow a productive use of the bus with very few lines of code, as in the following fully functional example:
 
