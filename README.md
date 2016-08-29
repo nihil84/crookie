@@ -4,6 +4,8 @@ C++11 simple yet powerful building blocks
 
 This is more a private collection of code snippets and little toolsets than a library, but you could find some useful classes for your project.
 
+The library is still in a highly experimental phase of its life, I apologies for all the lacks in documentation and I cannot guarantee that the public interface of any of the classes of the library will not change in the future.
+
 ## Dependencies ##
 
 The library has no dependencies except for the C++11 standard library. If you want to build also the test suite you will need `boost-test` headers and `libboost_unit_test_framework.a` compiled for your target.
@@ -89,3 +91,7 @@ private:
 };
 
 ```
+
+## Roadmap ##
+
+Next goal is to write a component that will integrate into the `EventBus` system and will allow serialization of events on file and on the network, providing logging and a seamless event sharing infrastructure among processes on the same machine and on distributed machines.
