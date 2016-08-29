@@ -63,7 +63,7 @@ int main(/*...*/)
 
 ```
 
-Furthermore you can derive from `crookie::ActiveObject` or `crookie::sbus::ActiveObject` to get all your events enqueued for later handling and/or for thread decoupling as in the example below where the class `ActiveHandler` will handle only in its private thread of execution all TestEvent instances dispatched on the MainBus:
+Furthermore you can derive from `crookie::ActiveObject` or `crookie::sbus::ActiveObject` to get all your events enqueued for later handling and/or for thread decoupling as in the example below, where the class `ActiveHandler` will handle only in its private thread of execution all `TestEvent` instances dispatched on the `MainBus` (as defined in the snippet above):
 
 
 ```
