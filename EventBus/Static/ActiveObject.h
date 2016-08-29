@@ -1,24 +1,24 @@
 #ifndef STATIC_ACTIVEOBJECT_H
 #define STATIC_ACTIVEOBJECT_H
 
-#include "../Dynamic/ActiveObject.h"
-#include "StaticBus.hpp"
+#include "StaticBus.h"
+#include "../ActiveObject.h"
 
 
 namespace crookie {
 namespace sbus {
 
-  template < unsigned int buscode, class Event >
-  class ActiveObject : public crookie::ActiveObject< Event >
-  {
-  public:
+template < unsigned int buscode, class... EventTypes >
+class ActiveObject : public crookie::ActiveObject< EventTypes... >
+{
+public:
 
-    typedef StaticBus< buscode > Bus;
+  typedef StaticBus< buscode > Bus;
 
-    ActiveObject()
-      : crookie::ActiveObject< Event >(Bus::instance())
-    { }
-  };
+  ActiveObject()
+    : crookie::ActiveObject< EventTypes... >(Bus::instance())
+  { }
+};
 
   
 }}

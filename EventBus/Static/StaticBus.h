@@ -16,29 +16,44 @@ namespace crookie {
 namespace sbus {
   
 
-// StaticBus EventHandler forward declaration
+// StaticBus EventHandlers forward declarations
+  
 template < unsigned buscode, class EventType >
   class AEventHandler;
+  
+template < unsigned int buscode, class... EventTypes >
+  class ActiveObject;
   
 // code
 
 template < unsigned code >
 class StaticBus : public EventBus
 {
-public /*types*/:
+public:
 
   template <class EventType>
   using Handler = AEventHandler< code, EventType >;
   
-  static const unsigned CODE = code;
-
-
-public /*interface*/:
-
-  static StaticBus< code >& instance();
+  template <class... EventTypes>
+  using ActiveObject = crookie::sbus::ActiveObject< code, EventTypes...>;
   
+  static const unsigned CODE = code;
+  
+  
+  static StaticBus< code >& instance();
 
-private /*types and data*/:
+  //! @brief Sends given event to all subscribed handlers.
+  static void dispatch(const Event& event)
+  { StaticBus< CODE >::instance().EventBus::dispatch(event); }
+  
+  template <typename EventClass, typename ...Args>
+  static void dispatch(Args&&... params)
+  {
+    dispatch(Event(new EventClass(std::forward<Args>(params)...)));
+  }
+
+
+private:
 
   StaticBus() { }
   
