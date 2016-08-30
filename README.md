@@ -10,7 +10,7 @@ See `LICENCE` file for licencing informations.
 
 ## Dependencies ##
 
-The library has no dependencies except for the C++11 standard library. If you want to build also the test suite you will need `boost-test` headers and `libboost_unit_test_framework.a` compiled for your target.
+The library has no dependencies except for the C++11 standard library but, if you want to build also the test suite you will need `boost-test` headers and `libboost_unit_test_framework.a` compiled for your target.
 
 The project is totally multi-platform and it make use of CMake (version 3.1 or above).
 
