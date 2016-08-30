@@ -123,7 +123,7 @@ BOOST_AUTO_TEST_CASE( basic_functional_test )
   
   g_bus->dispatch(Event(new TestEvent("## testBasicFunctionality ##")));
   
-  BOOST_CHECK(handler.gotit());
+  BOOST_REQUIRE(handler.gotit());
 }
 
 //------------------------------------------------------------------------------
@@ -132,14 +132,14 @@ BOOST_AUTO_TEST_CASE( check_correctness_on_reversed_destruction_sequence )
   EventBus* tempBus = new EventBus();
   TestEventHandler handler(*tempBus);
   
-  BOOST_CHECK(handler.AEventHandler<TestEvent>::subscribed());
+  BOOST_REQUIRE(handler.AEventHandler<TestEvent>::subscribed());
   
   tempBus->dispatch(Event(new TestEvent("## testBusDeletionCorrectness ##")));
-  BOOST_CHECK(handler.gotit());
+  BOOST_REQUIRE(handler.gotit());
   
   delete tempBus;
   
-  BOOST_CHECK(!handler.AEventHandler<TestEvent>::subscribed());
+  BOOST_REQUIRE(!handler.AEventHandler<TestEvent>::subscribed());
 }
 
 //------------------------------------------------------------------------------

@@ -77,18 +77,18 @@ BOOST_AUTO_TEST_CASE( basic_functional_test )
   MainBus::instance().dispatch<EventForNobody>();
   MainBus::instance().dispatch<TestEvent>();
   
-  BOOST_TEST( handler.m_test == 1 );
-  BOOST_TEST( handler.m_otherEvt == 0 );
+  BOOST_CHECK_EQUAL( handler.m_test, 1 );
+  BOOST_CHECK_EQUAL( handler.m_otherEvt, 0 );
 
   MainBus::instance().dispatch<AnOtherEmptyEvent>();
   
-  BOOST_TEST( handler.m_test == 1 );
-  BOOST_TEST( handler.m_otherEvt == 1 );
+  BOOST_CHECK_EQUAL( handler.m_test, 1 );
+  BOOST_CHECK_EQUAL( handler.m_otherEvt, 1 );
   
   MainBus::instance().dispatch<TestEvent>();
 
-  BOOST_TEST( handler.m_test == 2 );
-  BOOST_TEST( handler.m_otherEvt == 1 );
+  BOOST_CHECK_EQUAL( handler.m_test, 2 );
+  BOOST_CHECK_EQUAL( handler.m_otherEvt, 1 );
 }
 
 //------------------------------------------------------------------------------
@@ -99,18 +99,18 @@ BOOST_AUTO_TEST_CASE( static_dispatching_members )
   MainBus::dispatch<EventForNobody>();
   MainBus::dispatch<TestEvent>();
   
-  BOOST_TEST( handler.m_test == 1 );
-  BOOST_TEST( handler.m_otherEvt == 0 );
+  BOOST_CHECK_EQUAL( handler.m_test, 1 );
+  BOOST_CHECK_EQUAL( handler.m_otherEvt, 0 );
   
   MainBus::dispatch<AnOtherEmptyEvent>();
   
-  BOOST_TEST( handler.m_test == 1 );
-  BOOST_TEST( handler.m_otherEvt == 1 );
+  BOOST_CHECK_EQUAL( handler.m_test, 1 );
+  BOOST_CHECK_EQUAL( handler.m_otherEvt, 1 );
   
   MainBus::dispatch<TestEvent>();
   
-  BOOST_TEST( handler.m_test == 2 );
-  BOOST_TEST( handler.m_otherEvt == 1 );
+  BOOST_CHECK_EQUAL( handler.m_test, 2 );
+  BOOST_CHECK_EQUAL( handler.m_otherEvt, 1 );
 }
 
 //------------------------------------------------------------------------------
@@ -122,14 +122,14 @@ BOOST_AUTO_TEST_CASE( active_object_on_static_bus_threadless )
   MainBus::instance().dispatch<TestEvent>();
   handler.runOnce();
   
-  BOOST_TEST( handler.m_test == 1 );
-  BOOST_TEST( handler.m_otherEvt == 0 );
+  BOOST_CHECK_EQUAL( handler.m_test, 1 );
+  BOOST_CHECK_EQUAL( handler.m_otherEvt, 0 );
   
   MainBus::dispatch<TestEvent>();
   MainBus::dispatch<AnOtherEmptyEvent>();
   MainBus::dispatch<EventForNobody>();
   handler.runOnce();
   
-  BOOST_TEST( handler.m_test == 2 );
-  BOOST_TEST( handler.m_otherEvt == 1 );
+  BOOST_CHECK_EQUAL( handler.m_test, 2 );
+  BOOST_CHECK_EQUAL( handler.m_otherEvt, 1 );
 }
