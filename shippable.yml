@@ -1,0 +1,29 @@
+language: c
+
+compiler:
+  - gcc
+  - clang
+  
+build:
+    ci:
+      - sudo apt-get install libboost-dev-all -y
+      - sudo apt-get install cmake -y
+      - cmake --version
+   on_failure:
+
+   on_success:
+
+
+
+# only build develop
+branches:
+  only:
+    - master
+
+integrations:
+  notifications:
+    - integrationName: email
+      type: email
+      on_success: never
+      on_failure: never
+      on_pull_request: never
