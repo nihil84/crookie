@@ -1,8 +1,8 @@
-language: cpp
+language: c
 
 compiler:
-  - gcc
-  - clang
+  - g++
+  - clang++
   
 build:
     ci:
