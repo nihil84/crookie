@@ -1,3 +1,7 @@
+[![Run Status](https://api.shippable.com/projects/57cd5827268b731000b8b2a4/badge?branch=master)](https://app.shippable.com/projects/57cd5827268b731000b8b2a4) 
+[![Coverage Badge](https://api.shippable.com/projects/57cd5827268b731000b8b2a4/coverageBadge?branch=master)](https://app.shippable.com/projects/57cd5827268b731000b8b2a4) 
+
+
 # crookie #
 
 C++11 simple yet powerful building blocks
