@@ -2,7 +2,7 @@ language: c
 
 compiler:
   - gcc
-#  - clang
+  - clang
   
 build:
     ci:
@@ -12,8 +12,8 @@ build:
       - sudo apt-get install cmake -y
       - mkdir build && cd build
       - cmake .. && make
-
-
+    on_success:
+      - make check
 
 # only build develop
 branches:
