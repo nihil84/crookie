@@ -9,9 +9,6 @@ build:
       - sudo apt-get install libboost-dev-all -y
       - sudo apt-get install cmake -y
       - cmake --version
-   on_failure:
-
-   on_success:
 
 
 
