@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/nihil84/crookie.svg?branch=master)](https://travis-ci.org/nihil84/crookie)
+
 # crookie #
 
 C++11 simple yet powerful building blocks
