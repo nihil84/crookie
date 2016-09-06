@@ -6,7 +6,7 @@ This is more a private collection of code snippets and little toolsets than a li
 
 The library is still in a highly experimental phase of its life: I apology for all the lacks in documentation and I cannot guarantee that the public interface of any of the classes of the library nor even the name of the classes and their header files will not change in the future.
 
-See `LICENCE` file for licencing informations.
+See `LICENSE` file for licensing informations.
 
 ## Dependencies ##
 
