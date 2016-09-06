@@ -1,0 +1,23 @@
+
+# enable TRUSTY-BETA virtual environment (mainly for cmake-3.x)
+sudo: required
+dist: trusty
+
+language: cpp
+
+compiler:
+  - gcc
+  - clang
+
+install:
+  - sudo add-apt-repository ppa:george-edison55/cmake-3.x
+  - sudo apt-get update
+  - sudo apt-get install libboost-test-dev -y
+
+script:
+  - mkdir build
+  - cd build
+  - cmake .. && make
+      
+after_success:
+  - make check
