@@ -4,6 +4,8 @@ project (crookie CXX)
 set (crookie_VERSION_MAJOR 0)
 set (crookie_VERSION_MINOR 2)
 
+set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/CMakeModules)
+
 
 #configure_file(
 #	"${PROJECT_SOURCE_DIR}/config.h.in"
