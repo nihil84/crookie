@@ -1,8 +1,7 @@
 language: c
 
 compiler:
-  - g
-  - clang
+  - gcc
   
 build:
     ci:

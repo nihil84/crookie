@@ -1,4 +1,4 @@
-#define BOOST_TEST_MODULE "LockedPtr test"
+#define BOOST_TEST_MODULE "ActiveObject test"
 #include <boost/test/unit_test.hpp>
 
 #include <EventBus/Core/EventBus.h>
