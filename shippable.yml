@@ -3,16 +3,22 @@ language: c
 compiler:
   - gcc
   
+  
+before_script: 
+  - mkdir build
+  - mkdir -p shippable/testresults
+
 build:
     ci:
       - sudo add-apt-repository ppa:george-edison55/cmake-3.x
       - sudo apt-get update
       - sudo apt-get install libboost-all-dev -y
       - sudo apt-get install cmake -y
-      - mkdir build && cd build
+      - cd build
       - cmake .. && make
     on_success:
       - make check
+      - mv build/test/reports/* shippable/testresults
 
 # only build develop
 branches:
