@@ -15,10 +15,12 @@ build:
       - sudo apt-get install libboost-all-dev -y
       - sudo apt-get install cmake -y
       - cd build
-      - cmake .. && make
+      - cmake ..
+      - make
+      
     on_success:
       - make check
-      - mv build/test/reports/* shippable/testresults
+      - mv test/reports/* ../shippable/testresults
 
 # only build develop
 branches:
