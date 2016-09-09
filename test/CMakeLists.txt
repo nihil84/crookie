@@ -44,10 +44,20 @@ foreach (testSrc ${TEST_SRCS})
   
   add_test(NAME ${testName} 
       WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/reports
-      COMMAND ${CMAKE_CURRENT_SOURCE_DIR}/bin/${testName} --report_format=XML 
-              --report_level=detailed --report_sink=${testName}_report.xml
+      COMMAND ${CMAKE_CURRENT_SOURCE_DIR}/bin/${testName} 
+              --report_format=XML --report_level=detailed --report_sink=${testName}_report.xml
+              --log_format=xml --log_level=test_suite --log_sink=${testName}_log.xml
   )
 
   add_dependencies(check ${testName})
 
 endforeach (testSrc)
+
+# define coverage
+
+#if(CMAKE_COMPILER_IS_GNUCXX)
+#    include(CodeCoverage)
+#    setup_target_for_coverage(${PROJECT_NAME}_coverage check coverage)
+#endif()
+
+
