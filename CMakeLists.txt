@@ -47,9 +47,27 @@ set_property(TARGET crookie PROPERTY CXX_STANDART_REQUIRED ON)
 option (BUILD_TESTS "build test modules (use boost test framework)" ON)
 
 if (BUILD_TESTS)
+
+	set(CMAKE_CXX_FLAGS "-g -O0 --coverage -fprofile-arcs -ftest-coverage")
+
   add_custom_target(check 
 			WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/test
       COMMAND ${CMAKE_CTEST_COMMAND} --verbose -C ${CMAKE_BUILD_TYPE}
 	)
+	
   add_subdirectory(test)
+	
+	if (CMAKE_COMPILER_IS_GNUCXX)
+
+		find_program( GCOV_PATH gcov )
+		find_program( GCOVR_PATH gcovr)
+
+		add_custom_target(coverage
+				${GCOVR_PATH} -x -r ${CMAKE_SOURCE_DIR} -e '${CMAKE_SOURCE_DIR}/test/'  -o coverage.xml
+				WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/test/reports
+				DEPENDS check
+				COMMENT "Running gcovr to produce Cobertura code coverage report."
+		)
+	endif()
+
 endif (BUILD_TESTS)
