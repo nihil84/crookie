@@ -19,8 +19,9 @@ build:
       
     on_success:
       - make check
-      - cd ..
-      - xsltproc -o shippable/testresults/results.xml test/boosttest_to_junit.xslt build/test/reports/test_*_log.xml 
+      - cd test/reports
+      - for log in ./test_*_log.xml; do xsltproc -o ../../../shippable/testresults/${log} ../../../test/boosttest_to_junit.xslt ${log}; done
+#      - xsltproc -o shippable/testresults/results.xml test/boosttest_to_junit.xslt build/test/reports/test_*_log.xml 
 
 # only build develop
 branches:
