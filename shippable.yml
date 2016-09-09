@@ -15,7 +15,7 @@ build:
       - sudo apt-get install libboost-all-dev -y
       - sudo apt-get install cmake -y
       - cd build
-      - cmake ..
+      - cmake -DCMAKE_BUILD_TYPE=Debug ..
       - make
       
     on_success:
