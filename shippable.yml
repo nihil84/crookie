@@ -20,8 +20,10 @@ build:
       
     on_success:
       - make check
+      - make coverage
       - cd test/reports
       - for log in ./test_*_log.xml; do xsltproc -o ../../../shippable/testresults/${log} ../../../test/boosttest_to_junit.xslt ${log}; done
+      - mv coverage.xml ../../../shippable/codecoverage
 
 # only build develop
 branches:
