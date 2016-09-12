@@ -1,6 +1,9 @@
 [![Run Status](https://api.shippable.com/projects/57cd5827268b731000b8b2a4/badge?branch=master)](https://app.shippable.com/projects/57cd5827268b731000b8b2a4)
 [![Coverage Badge](https://api.shippable.com/projects/57cd5827268b731000b8b2a4/coverageBadge?branch=master)](https://app.shippable.com/projects/57cd5827268b731000b8b2a4)
 
+[![Bitbucket issues](https://img.shields.io/bitbucket/issues/atlassian/python-bitbucket.svg?maxAge=2592000)]()
+
+
 # crookie #
 
 C++11 simple yet powerful building blocks
