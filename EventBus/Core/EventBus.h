@@ -2,12 +2,10 @@
 #define DYNAMIC_EVENTBUS_H
 
 #include "IEventHandler.h"
-#include "BucketException.h"
 #include "MonitoredCollection.h"
 
 #include <memory>
 #include <mutex>
-#include <list>
 #include <unordered_map>
 
 
@@ -26,7 +24,6 @@ public:
 
   //! @brief Type of subscribers list
   typedef MonitoredCollection< IEventHandler* > List;
-
 
   //! @brief Construct a new bus with no handlers registered
   EventBus() { }

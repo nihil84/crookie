@@ -46,7 +46,7 @@ foreach (testSrc ${TEST_SRCS})
       WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/reports
       COMMAND ${CMAKE_CURRENT_SOURCE_DIR}/bin/${testName} 
               --report_format=XML --report_level=detailed --report_sink=${testName}_report.xml
-              --log_format=xml --log_level=test_suite --log_sink=${testName}_log.xml
+              --log_format=XML --log_level=test_suite --log_sink=${testName}_log.xml
   )
 
   add_dependencies(check ${testName})

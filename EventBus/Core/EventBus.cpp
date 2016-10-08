@@ -1,10 +1,9 @@
 #include "EventBus.h"
+#include "../../Utils/ScopeGuard.h"
 
 #include <stdexcept>
 
 using namespace crookie;
-
-typedef BucketException< IEventHandler > BusException;
 
 
 
@@ -86,31 +85,38 @@ void EventBus::dispatch(const Event& event)
   }
 
   m_firingDepth++;
-
+  ScopeGuard guard = [&] () { --m_firingDepth; };
+  
   List::Iterable iterable = subscribers->second->getIterable();
-
-  BusException bucket(m_firingDepth);
   List::Iterable::const_iterator it = iterable.begin();
-  for (; it != iterable.end(); ++it) try
+  
+  std::exception_ptr uncaught_ex;
+  
+  for (; it != iterable.end(); ++it)
   {
-    (*it)->handle(event);
+    try
+    {
+      (*it)->handle(event);
+    }
+    catch (...)
+    {
+      uncaught_ex = std::current_exception();
+    }
+  
+    if (uncaught_ex) try
+    {
+      // if the concrete handler as a custom implementation of the exception
+      // handler, the bus will recover and continue to dispatch events...
+      (*it)->handle(uncaught_ex);
+    }
+    catch (...)
+    {
+      // ...otherwise, or if even this handler raises an exception, the
+      // exception is forwarded to the outer level interrupting the dispatching
+      std::throw_with_nested(std::runtime_error("EventBus dispatching "
+          "interrupted abruptly by unhandled exception"));
+    }
   }
-  catch (std::exception& ex)
-  {
-    bucket.add(*it, ex);
-  }
-  catch (...)
-  {
-    bucket.add(*it, std::logic_error(
-        "EventBus caught an exception of an unknown type "
-        "(you should derive all your exceptions from std::exception,"
-        " throw them by value and catch by reference)"
-    ));
-  }
-
-  m_firingDepth--;
-
-  if (!bucket.empty())
-      throw bucket;
+  
+  // not dismissing guard because depth has to be decremented anyway
 }
-

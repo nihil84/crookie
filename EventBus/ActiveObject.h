@@ -9,7 +9,12 @@
 
 namespace crookie {
 
-
+/**
+ * @brief
+ * 
+ * @todo replace the std::queue and the mutex with a lockless implementation
+ * with the atomic functionalities of C++11
+ */
 template <class... EventTypes>
 class ActiveObject : public AEventHandler<EventTypes>...
 {

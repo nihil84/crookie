@@ -15,6 +15,7 @@ set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/CMakeModules)
 include_directories("${PROJECT_BINARY_DIR}/include")
 
 set( HEADERS
+  Utils/ScopeGuard.h
   MultiThreading/LockedPtr.h
   MultiThreading/SimpleLock.h
   EventBus/ActiveObject.h
@@ -22,7 +23,6 @@ set( HEADERS
   EventBus/EventBase.h
   EventBus/HandlerFunctor.h
   EventBus/Core/EventBus.h
-  EventBus/Core/BucketException.h
   EventBus/Core/IEvent.h
   EventBus/Core/IEventHandler.h
   EventBus/Core/MonitoredCollection.h
@@ -48,7 +48,9 @@ option (BUILD_TESTS "build test modules (use boost test framework)" ON)
 
 if (BUILD_TESTS)
 
+if (CMAKE_COMPILER_IS_GNUCXX)
 	set(CMAKE_CXX_FLAGS "-g -O0 --coverage -fprofile-arcs -ftest-coverage")
+endif ()
 
   add_custom_target(check 
 			WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/test
@@ -68,6 +70,6 @@ if (BUILD_TESTS)
 				DEPENDS check
 				COMMENT "Running gcovr to produce Cobertura code coverage report."
 		)
-	endif()
+	endif ()
 
 endif (BUILD_TESTS)

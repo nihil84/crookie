@@ -2,7 +2,10 @@
 #define IEVENTHANDLER_H
 
 #include "IEvent.h"
+
 #include <memory>
+#include <exception>
+
 
 namespace crookie {
 
@@ -18,11 +21,19 @@ public:
   virtual ~IEventDispatcher() noexcept { }
   
   //! @brief Handle given event.
-  //! This base implementation simply call dispatch on the event.
+  //! @details This base implementation simply call dispatch on the event and
+  //! in most cases it is not needed to reimplement this function unless 
   //! @see crookie::ActiveObject
   virtual void handle(const Event& event)
   {
     event->dispatch(*this);
+  }
+  
+  //! @brief Handle the exception pointed by @c eptr which has been thrown by
+  //! the stanadard
+  virtual void handle(std::exception_ptr eptr)
+  {
+    std::rethrow_exception(eptr);
   }
 };
   

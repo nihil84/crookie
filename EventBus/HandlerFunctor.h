@@ -127,6 +127,16 @@ private:
   HandlerFunctor& operator =(const HandlerFunctor&) = delete;
 };
   
+/**
+ *
+ */
+template <class EventType>
+inline HandlerFunctor<EventType> makeHandler(
+    EventBus& bus,
+    const std::function<void(const EventType&)>& fun)
+{
+  return HandlerFunctor<EventType>(bus, fun);
+}
 
 //- move constructor ---------------------------------------------------------//
 template <class EventType>
@@ -135,7 +145,10 @@ HandlerFunctor<EventType>::HandlerFunctor(HandlerFunctor<EventType>&& rv)
   if (rv)
   {
     this->m_fun = rv.m_fun;
-    this->subscribe(*rv.m_owner);
+    if (this->m_fun && rv.owner() != nullptr)
+    {
+      this->subscribe(*rv.owner());
+    }
     
     rv.unsubscribe();
     rv.m_fun = HandlerFunction(); // reset rvalue functor
@@ -163,7 +176,7 @@ HandlerFunctor<EventType>& HandlerFunctor<EventType>::operator =(
   
   return *this;
 }
-  
+
 } // end of namespace
 
 #endif /* HANDLERFUNCTOR_H */
