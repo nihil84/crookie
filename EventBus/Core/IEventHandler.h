@@ -30,7 +30,7 @@ public:
   }
   
   //! @brief Handle the exception pointed by @c eptr which has been thrown by
-  //! the stanadard
+  //! the standard handle() function for events
   virtual void handle(std::exception_ptr eptr)
   {
     std::rethrow_exception(eptr);

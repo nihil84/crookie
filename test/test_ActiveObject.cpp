@@ -46,11 +46,6 @@ public:
     : ActiveObject<SimpleEvent, AnEvent>(bus)
   { }
   
-  void run()
-  {
-    m_thread = std::thread(&ActiveHandler::loop, this);
-  }
-  
   void runOnce()
   {
     dispatch();
@@ -68,23 +63,9 @@ public:
   
   bool receivedSimple() const { return m_simple; }
   
-  void stop()
-  {
-    m_done = true;
-    m_thread.join();
-  }
-  
 private:
   
-  std::thread m_thread;
   bool m_simple = false;
-  bool m_done = false;
-  
-  void loop()
-  {
-    while (!m_done)
-      dispatch();
-  }
 };
 
 
@@ -114,14 +95,14 @@ BOOST_AUTO_TEST_CASE( test_concurrent_delivery )
   
   BOOST_CHECK( !handler.receivedSimple() );
   
-  handler.run();
+  handler.start();
   
   std::this_thread::sleep_for(std::chrono::seconds(1));
   
   while (!handler.receivedSimple())
     ;
   
-  handler.stop();
+  handler.quit();
   
   BOOST_CHECK( handler.receivedSimple() );
 }
