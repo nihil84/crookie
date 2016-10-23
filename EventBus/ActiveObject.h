@@ -4,6 +4,7 @@
 #include "AEventHandler.h"
 
 #include <list>
+#include <atomic>
 #include <mutex>
 #include <thread>
 
