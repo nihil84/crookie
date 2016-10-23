@@ -41,6 +41,8 @@ add_library(crookie
 set_property(TARGET crookie PROPERTY CXX_STANDARD 11)
 set_property(TARGET crookie PROPERTY CXX_STANDART_REQUIRED ON)
 
+find_package (Threads REQUIRED)
+
 
 # test
 
