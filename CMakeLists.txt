@@ -41,10 +41,10 @@ add_library(crookie
 set_property(TARGET crookie PROPERTY CXX_STANDARD 11)
 set_property(TARGET crookie PROPERTY CXX_STANDART_REQUIRED ON)
 
-find_package (Threads REQUIRED)
+#find_package (Threads REQUIRED)
 
 
-# test
+# tests
 
 option (BUILD_TESTS "build test modules (use boost test framework)" ON)
 
