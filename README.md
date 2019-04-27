@@ -1,8 +1,4 @@
-[![Run Status](https://api.shippable.com/projects/57cd5827268b731000b8b2a4/badge?branch=master)](https://app.shippable.com/projects/57cd5827268b731000b8b2a4)
-[![Coverage Badge](https://api.shippable.com/projects/57cd5827268b731000b8b2a4/coverageBadge?branch=master)](https://app.shippable.com/projects/57cd5827268b731000b8b2a4)
-
-[![Bitbucket issues](https://img.shields.io/bitbucket/issues/atlassian/python-bitbucket.svg?maxAge=2592000)]()
-
+[![Run Status](https://api.shippable.com/projects/5cc464d9bbceea000795759a/badge?branch=master)]() [![Coverage Badge](https://api.shippable.com/projects/5cc464d9bbceea000795759a/coverageBadge?branch=master)]() 
 
 # crookie #
 
