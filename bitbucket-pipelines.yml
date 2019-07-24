@@ -1,0 +1,29 @@
+# This is a sample build configuration for C++ – Make.
+# Check our guides at https://confluence.atlassian.com/x/5Q4SMw for more examples.
+# Only use spaces to indent your .yml configuration.
+# -----
+# You can specify a custom docker image from Docker Hub as your build environment.
+image: gcc:6.5
+
+pipelines:
+  default:
+    - step:
+        name: "Prepare image"
+        script:
+          - sudo add-apt-repository ppa:george-edison55/cmake-3.x
+          - sudo apt-get update
+          - sudo apt-get install libboost-test-dev cmake xsltproc python-pip -y
+          - sudo pip install gcovr
+    - step:
+       name: "Build"
+       script:
+          - mkdir build
+          - cd build
+          - cmake -DCMAKE_BUILD_TYPE=Debug ..
+          - make
+    - step:
+       name: "Test"
+       script: 
+          - make check
+
+
