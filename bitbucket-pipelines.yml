@@ -10,6 +10,7 @@ pipelines:
     - step:
         name: "Prepare image"
         script:
+          - apt-get update
           - apt-get install libboost-test-dev xsltproc python-pip -y
     - step:
        name: "Build"
