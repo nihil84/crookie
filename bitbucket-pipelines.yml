@@ -3,17 +3,14 @@
 # Only use spaces to indent your .yml configuration.
 # -----
 # You can specify a custom docker image from Docker Hub as your build environment.
-image: gcc:6.5
+image: nercury/cmake-cpp:clang-3.8
 
 pipelines:
   default:
     - step:
         name: "Prepare image"
         script:
-          - add-apt-repository ppa:george-edison55/cmake-3.x
-          - apt-get update
-          - apt-get install libboost-test-dev cmake xsltproc python-pip -y
-          - pip install gcovr
+          - apt-get install libboost-test-dev xsltproc python-pip -y
     - step:
        name: "Build"
        script:
