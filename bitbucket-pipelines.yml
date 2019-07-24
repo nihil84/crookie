@@ -8,20 +8,13 @@ image: nercury/cmake-cpp:clang-3.8
 pipelines:
   default:
     - step:
-        name: "Prepare image"
         script:
           - apt-get update
           - apt-get install libboost-test-dev xsltproc python-pip -y
-    - step:
-       name: "Build"
-       script:
           - mkdir build
           - cd build
           - cmake -DCMAKE_BUILD_TYPE=Debug ..
           - make
-    - step:
-       name: "Test"
-       script: 
           - make check
 
 
