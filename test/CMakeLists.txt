@@ -17,6 +17,8 @@ install directory with the BOOST_ROOT CMake variable.")
 endif (NOT Boost_UNIT_TEST_FRAMEWORK_FOUND)
 
 
+file (MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/reports)
+
 file (GLOB TEST_SRCS RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}/ *.cpp)
 
 foreach (testSrc ${TEST_SRCS})
@@ -41,10 +43,15 @@ foreach (testSrc ${TEST_SRCS})
   set_property(TARGET ${testName} PROPERTY CXX_STANDART_REQUIRED ON)
   
   add_test(NAME ${testName} 
-      WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/bin
-      COMMAND ${CMAKE_CURRENT_SOURCE_DIR}/bin/${testName}
+      WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/reports
+      COMMAND ${CMAKE_CURRENT_SOURCE_DIR}/bin/${testName} 
+              --report_format=XML --report_level=detailed --report_sink=${testName}_report.xml
+              --log_format=XML --log_level=test_suite --log_sink=${testName}_log.xml
   )
 
   add_dependencies(check ${testName})
 
 endforeach (testSrc)
+
+
+

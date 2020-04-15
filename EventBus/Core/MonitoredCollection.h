@@ -64,6 +64,8 @@ public:
     std::unique_lock<std::mutex> lock(mutex_);
     collection_.remove(element);
   }
+  
+  size_t size() const { return collection_.size(); }
 
   //! @brief Return a special object that allows to iterate over the
   //! collection in mutual exclusion.

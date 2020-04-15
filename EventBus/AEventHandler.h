@@ -37,7 +37,6 @@ public:
 
   //! @brief Handler routine.
   virtual void onEvent(const HandledEvent& event) = 0;
-  
 };
 
   

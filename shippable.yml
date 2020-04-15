@@ -1,19 +1,29 @@
 language: c
 
 compiler:
-  - g
-  - clang
+  - gcc
   
+  
+before_script: 
+  - mkdir build
+  - mkdir -p shippable/testresults
+
 build:
     ci:
       - sudo add-apt-repository ppa:george-edison55/cmake-3.x
       - sudo apt-get update
-      - sudo apt-get install libboost-all-dev -y
-      - sudo apt-get install cmake -y
-      - mkdir build && cd build
-      - cmake .. && make
+      - sudo apt-get install libboost-test-dev cmake xsltproc python-pip -y
+      - sudo pip install gcovr
+      - cd build
+      - cmake -DCMAKE_BUILD_TYPE=Debug ..
+      - make
+      
     on_success:
       - make check
+      - make coverage
+      - cd test/reports
+      - for log in ./test_*_log.xml; do xsltproc -o ../../../shippable/testresults/${log} ../../../test/boosttest_to_junit.xslt ${log}; done
+      - mv coverage.xml ../../../shippable/codecoverage
 
 # only build develop
 branches:
@@ -24,6 +34,6 @@ integrations:
   notifications:
     - integrationName: email
       type: email
-      on_success: never
-      on_failure: never
+      on_success: change
+      on_failure: always
       on_pull_request: never

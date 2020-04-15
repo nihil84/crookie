@@ -1,4 +1,4 @@
-#define BOOST_TEST_MODULE "LockedPtr test"
+#define BOOST_TEST_MODULE "ActiveObject test"
 #include <boost/test/unit_test.hpp>
 
 #include <EventBus/Core/EventBus.h>
@@ -9,6 +9,7 @@
 #include <string>
 #include <thread>
 #include <chrono>
+#include <stdexcept>
 #include <cassert>
 
 using namespace std;
@@ -34,7 +35,8 @@ public:
 class AnEvent : public EventBase<AnEvent>
 {
 public:
-  AnEvent() {}
+  AnEvent(int n) : n(n) {}
+  int n;
 };
 
 
@@ -45,11 +47,6 @@ public:
   ActiveHandler(EventBus& bus)
     : ActiveObject<SimpleEvent, AnEvent>(bus)
   { }
-  
-  void run()
-  {
-    m_thread = std::thread(&ActiveHandler::loop, this);
-  }
   
   void runOnce()
   {
@@ -63,27 +60,35 @@ public:
   
   void onEvent(const AnEvent& evt)
   {
+    if (evt.n != m_ordered)
+    {
+      throw std::logic_error("an event has been receieved out of order");
+    }
     
+    m_ordered++;
+    
+    if (evt.n == 1)
+    {
+      throw std::runtime_error("let's start with an error");
+    }
   }
   
   bool receivedSimple() const { return m_simple; }
   
-  void stop()
-  {
-    m_done = true;
-    m_thread.join();
-  }
+  int count() const { return m_ordered; }
   
 private:
   
-  std::thread m_thread;
   bool m_simple = false;
-  bool m_done = false;
+  int m_ordered = 0;
   
-  void loop()
+  virtual void run()
   {
-    while (!m_done)
-      dispatch();
+    for (;;)
+    {
+      try { ObjectBase::run(); break; }
+      catch (std::runtime_error& ex) { } // intercept runtime_error only
+    }
   }
 };
 
@@ -112,18 +117,65 @@ BOOST_AUTO_TEST_CASE( test_concurrent_delivery )
   
   m_bus->dispatch<SimpleEvent>();
   
+  // checks handling does not happen if thread is off
   BOOST_CHECK( !handler.receivedSimple() );
   
-  handler.run();
+  handler.start();
   
   std::this_thread::sleep_for(std::chrono::seconds(1));
   
   while (!handler.receivedSimple())
     ;
   
-  handler.stop();
+  handler.quit();
+  handler.join();
   
   BOOST_CHECK( handler.receivedSimple() );
+}
+
+//------------------------------------------------------------------------------
+BOOST_AUTO_TEST_CASE( test_activeobject_resume_after_exception )
+{
+  ActiveHandler handler(*m_bus);
+  
+  try
+  {
+    m_bus->dispatch<SimpleEvent>();
+    m_bus->dispatch<AnEvent>(0);
+    m_bus->dispatch<AnEvent>(1);
+    
+    // dispatching will be interrupted here by the runtime_error exception
+    // but it should be resumed in the same order, otherwise an unhandled
+    // logic_error exception will be caught from the catch below, failing the
+    // test
+    
+    m_bus->dispatch<AnEvent>(2);
+    m_bus->dispatch<AnEvent>(3);
+    m_bus->dispatch<AnEvent>(4);
+    
+    BOOST_CHECK(!handler.receivedSimple());
+    BOOST_CHECK(handler.count() == 0);
+    
+    handler.start();
+    
+    std::this_thread::sleep_for(std::chrono::seconds(1));
+    
+    while (handler.count() < 5)
+      ;
+    
+    handler.quit();
+    handler.join();
+
+    BOOST_CHECK(handler.receivedSimple());
+    BOOST_CHECK(handler.count() == 5);
+  }
+  catch (std::exception& ex)
+  {
+    // exception shall not be propagated here
+    BOOST_TEST_MESSAGE(std::string("unexpected exception: ") + ex.what());
+    
+    BOOST_CHECK(false);
+  }
 }
 
 BOOST_AUTO_TEST_SUITE_END()

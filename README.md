@@ -1,5 +1,3 @@
-[![Build Status](https://travis-ci.org/nihil84/crookie.svg?branch=master)](https://travis-ci.org/nihil84/crookie)
-
 # crookie #
 
 C++11 simple yet powerful building blocks
@@ -8,7 +6,7 @@ This is more a private collection of code snippets and little toolsets than a li
 
 The library is still in a highly experimental phase of its life: I apology for all the lacks in documentation and I cannot guarantee that the public interface of any of the classes of the library nor even the name of the classes and their header files will not change in the future.
 
-See `LICENCE` file for licencing informations.
+See `LICENSE` file for licensing informations.
 
 ## Dependencies ##
 
@@ -16,7 +14,7 @@ The library has no dependencies except for the C++11 standard library but, if yo
 
 The project is totally multi-platform and it make use of CMake (version 3.1 or above).
 
-## Currently implemented modules ##
+* * *
 
 ### MultiThreading ###
 

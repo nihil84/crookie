@@ -8,6 +8,7 @@
 
 #include <iostream>
 #include <string>
+#include <stdexcept>
 #include <cassert>
 
 using namespace std;
@@ -64,6 +65,20 @@ public:
   void onEvent(const AnotherEvent& evt) override
   {
     m_another = true;
+    
+    if (evt.m_a < 0)
+    {
+      throw std::logic_error("parameter a was less than 0");
+    }
+  }
+  
+  virtual void handle(std::exception_ptr eptr) override
+  {
+    try { std::rethrow_exception(eptr); }
+    catch (std::logic_error& ex)
+    {
+      BOOST_TEST_MESSAGE("exception handled internally: " << ex.what());
+    }
   }
   
   bool gotit() const { return m_gotit; }
@@ -201,6 +216,54 @@ BOOST_AUTO_TEST_CASE( test_handler_functors )
   g_bus->dispatch<AnotherEvent>(4, 22.8);
   
   BOOST_CHECK(handler.another() && object.good && aGoodOldGlobal);
+}
+
+
+void aStaticFunctionRaisingException(const TestEvent& evt)
+{
+  throw logic_error(evt.message());
+}
+
+// prints the explanatory string of an exception. If the exception is nested,
+// recurses to print the explanatory of the exception it holds
+void print_exception(const std::exception& e, int level =  0)
+{
+  BOOST_TEST_MESSAGE("exception (" << level << "): " << e.what() << '\n');
+  try {
+    std::rethrow_if_nested(e);
+  } catch(const std::exception& e) {
+    print_exception(e, level+1);
+  } catch(...) {}
+}
+
+//------------------------------------------------------------------------------
+BOOST_AUTO_TEST_CASE( test_exception_handling )
+{
+  HandlerFunctor<TestEvent> functor(*g_bus, aStaticFunctionRaisingException);
+  TestEventHandler handler1(*g_bus);
+  TestEventHandler handler2(*g_bus);
+  
+  try {
+    g_bus->dispatch<TestEvent>("exception!");
+    BOOST_CHECK(false);
+  }
+  catch (std::exception& ex)
+  {
+    BOOST_TEST_MESSAGE("exception forwared as expected");
+    print_exception(ex);
+  }
+  
+  try {
+    g_bus->dispatch<AnotherEvent>(-1, 3.3);
+    
+    // verify internal exception handling did not intrrupted the event
+    // dispatching by checking both handlers processed the event
+    BOOST_CHECK(handler1.another() && handler2.another());
+  }
+  catch (...)
+  {
+    BOOST_CHECK(false);
+  }
 }
 
 
